@@ -31,12 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.menu_head = new System.Windows.Forms.MenuStrip();
             this.sixgen = new System.Windows.Forms.ToolStripMenuItem();
-            this.眼见喜ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.耳听怒ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.鼻嗅爱ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.舌尝思ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.身本忧ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.意见欲ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.m_api = new System.Windows.Forms.ToolStripMenuItem();
             this.m_ServiceOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.m_ServiceClose = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,52 +87,9 @@
             // 
             // sixgen
             // 
-            this.sixgen.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.眼见喜ToolStripMenuItem,
-            this.耳听怒ToolStripMenuItem,
-            this.鼻嗅爱ToolStripMenuItem,
-            this.舌尝思ToolStripMenuItem,
-            this.身本忧ToolStripMenuItem,
-            this.意见欲ToolStripMenuItem});
             this.sixgen.Name = "sixgen";
             this.sixgen.Size = new System.Drawing.Size(58, 21);
             this.sixgen.Text = "menus";
-            // 
-            // 眼见喜ToolStripMenuItem
-            // 
-            this.眼见喜ToolStripMenuItem.Name = "眼见喜ToolStripMenuItem";
-            this.眼见喜ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.眼见喜ToolStripMenuItem.Text = "眼见喜";
-            // 
-            // 耳听怒ToolStripMenuItem
-            // 
-            this.耳听怒ToolStripMenuItem.Name = "耳听怒ToolStripMenuItem";
-            this.耳听怒ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.耳听怒ToolStripMenuItem.Text = "耳听怒";
-            // 
-            // 鼻嗅爱ToolStripMenuItem
-            // 
-            this.鼻嗅爱ToolStripMenuItem.Name = "鼻嗅爱ToolStripMenuItem";
-            this.鼻嗅爱ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.鼻嗅爱ToolStripMenuItem.Text = "鼻嗅爱";
-            // 
-            // 舌尝思ToolStripMenuItem
-            // 
-            this.舌尝思ToolStripMenuItem.Name = "舌尝思ToolStripMenuItem";
-            this.舌尝思ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.舌尝思ToolStripMenuItem.Text = "舌尝思";
-            // 
-            // 身本忧ToolStripMenuItem
-            // 
-            this.身本忧ToolStripMenuItem.Name = "身本忧ToolStripMenuItem";
-            this.身本忧ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.身本忧ToolStripMenuItem.Text = "身本忧";
-            // 
-            // 意见欲ToolStripMenuItem
-            // 
-            this.意见欲ToolStripMenuItem.Name = "意见欲ToolStripMenuItem";
-            this.意见欲ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.意见欲ToolStripMenuItem.Text = "意见欲";
             // 
             // m_api
             // 
@@ -423,12 +374,6 @@
         private System.Windows.Forms.ToolStripMenuItem m_studio;
         private System.Windows.Forms.ToolStripStatusLabel status_foot_service;
         private System.Windows.Forms.ToolStripMenuItem sixgen;
-        private System.Windows.Forms.ToolStripMenuItem 眼见喜ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 耳听怒ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 鼻嗅爱ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 舌尝思ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 身本忧ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 意见欲ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem m_Redis;
         private System.Windows.Forms.ToolStripMenuItem m_RedisDemo_C;
         private System.Windows.Forms.ToolStripMenuItem m_MailDemo_C;
