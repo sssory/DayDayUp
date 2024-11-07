@@ -405,11 +405,11 @@ namespace DayDayUI.Controls
             try
             {
                 await HttpSend.SendPostAsync(txt_url.Text.Trim(), HttpSend.DefaultContent(txt_json.Text.Trim()));
-                AppMessage.Logmsg("下发成功");
+                App.MainForm.LogMessage("下发成功");
             }
             catch (Exception ex)
             {
-                AppMessage.Logmsg("发生错误：" + ex.Message);
+                App.MainForm.LogMessage("发生错误：" + ex.Message);
             }
 
         }

@@ -62,20 +62,20 @@ namespace DayDayUI.Controls
                 {
                     fs.Write(bytes, 1, length - 1);
          
-                    Logmsg("Server文件：" + fileName);
+                    LogMessage("Server文件：" + fileName);
                 }
 
             }
             catch (Exception ex)
             {
-                Logmsg($"保存时发生错误，" + ex.Message);
+                LogMessage($"保存时发生错误，" + ex.Message);
             }
         }
         private Socket socket = null;
         #region 消息
-        private void Logmsg(string msg)
+        private void LogMessage(string msg)
         {
-            AppMessage.Logmsg(msg);
+            App.MainForm.LogMessage(msg);
         }
         #endregion
         private void ReceiveMsg()
@@ -91,13 +91,13 @@ namespace DayDayUI.Controls
                 }
                 catch (Exception)
                 {
-                    Logmsg($"连接已断线");
+                    LogMessage($"连接已断线");
                     break;
                 }
 
                 if (length == 0)
                 {
-                    Logmsg($"连接已断线");
+                    LogMessage($"连接已断线");
                     break;
                 }
 
@@ -106,7 +106,7 @@ namespace DayDayUI.Controls
                 {
                     //消息
                     string msg = Encoding.UTF8.GetString(bytes, 1, bytes.Length - 1);
-                    Logmsg("Server消息：" + msg);
+                    LogMessage("Server消息：" + msg);
                 }
                 else
                 {
@@ -114,13 +114,13 @@ namespace DayDayUI.Controls
                     if (this.rbascill.Checked)
                     {
                         msg = Encoding.UTF8.GetString(bytes).Substring(0, length);
-                        Logmsg("接收报文:" + msg);
+                        LogMessage("接收报文:" + msg);
                     }
                     else {
                         // 将byte数组转换为十六进制字符串  
                         string hexString = BitConverter.ToString(bytes).Replace("-", "").ToUpper().Substring(0, length*2); ;
             
-                        Logmsg("接收报文:" + hexString);
+                        LogMessage("接收报文:" + hexString);
                     }
 
                 }
@@ -138,12 +138,12 @@ namespace DayDayUI.Controls
             try
             {
                 socket.Connect(IPE);
-                Logmsg("socket服务已连接");
+                LogMessage("socket服务已连接");
             }
             catch (Exception ex)
             {
                 btn_open.Enabled = true;
-                Logmsg("socket服务连接失败，" + ex.Message.Replace("\r", "").Replace("\n", ""));
+                LogMessage("socket服务连接失败，" + ex.Message.Replace("\r", "").Replace("\n", ""));
                 return;
             }
 
@@ -506,7 +506,7 @@ namespace DayDayUI.Controls
             comBytes = GetComandByte(msg);
 			}
             socket.Send(comBytes);
-            Logmsg("发送报文:" + txt_send.Text);
+            LogMessage("发送报文:" + txt_send.Text);
             txt_send.Text = "";
         }
         public string appPath = AppDomain.CurrentDomain.BaseDirectory;

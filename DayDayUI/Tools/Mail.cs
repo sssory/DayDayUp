@@ -51,7 +51,7 @@ namespace DayDayUI.Tools
             }
             catch (System.Net.Mail.SmtpException ex)
             {
-                AppMessage.Logmsg(ex.Message);
+                App.MainForm.LogMessage(ex.Message);
                 return false;
             }
         }

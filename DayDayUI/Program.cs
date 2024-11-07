@@ -14,7 +14,6 @@ namespace DayDayUI
         [STAThread]
         static void Main()
         {
-            APIService.Service.sercives.Start();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new DayDayForm());

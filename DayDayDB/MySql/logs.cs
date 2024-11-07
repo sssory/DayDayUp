@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DayDayUI.Model
+namespace DayDayDB.MySql
 {
-    [SugarTable("Log")]
-    public class LogModel
+    [SugarTable("logs")]
+    public class logs
     {
         [SugarColumn(IsPrimaryKey =true,IsIdentity =true)]
         public int ID { get; set; }

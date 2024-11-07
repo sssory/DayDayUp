@@ -50,7 +50,7 @@
             this.txt_namespace.Name = "txt_namespace";
             this.txt_namespace.Size = new System.Drawing.Size(137, 21);
             this.txt_namespace.TabIndex = 1;
-            this.txt_namespace.Text = "DayDayUI.Model.MySql";
+            this.txt_namespace.Text = "DayDayDB.MySql";
             // 
             // label1
             // 

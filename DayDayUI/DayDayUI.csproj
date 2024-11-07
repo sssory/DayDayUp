@@ -189,14 +189,24 @@
     <Compile Include="Controls\Socket\SocketServerControl.Designer.cs">
       <DependentUpon>SocketServerControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Studio\MySqlBackUpControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Studio\MySqlBackUpControl.Designer.cs">
+      <DependentUpon>MySqlBackUpControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Studio\SugarModelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Studio\SugarModelControl.Designer.cs">
+      <DependentUpon>SugarModelControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="DayDayForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DayDayForm.Designer.cs">
       <DependentUpon>DayDayForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\MySql\LogModel.cs" />
-    <Compile Include="Model\Sugar.cs" />
     <Compile Include="Forms\Socket\McEthernetShow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,8 +215,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\App.cs" />
     <Compile Include="Tools\AppConfig.cs" />
-    <Compile Include="Tools\AppMessage.cs" />
     <Compile Include="Tools\ControlHelper.cs" />
     <Compile Include="Tools\ExtendMethods.cs" />
     <Compile Include="Tools\HttpSend.cs" />
@@ -235,6 +245,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\Socket\SocketServerControl.resx">
       <DependentUpon>SocketServerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Studio\MySqlBackUpControl.resx">
+      <DependentUpon>MySqlBackUpControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Studio\SugarModelControl.resx">
+      <DependentUpon>SugarModelControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DayDayForm.resx">
       <DependentUpon>DayDayForm.cs</DependentUpon>
@@ -266,8 +282,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\Studio\" />
     <Folder Include="Forms\ToolStrip\" />
+    <Folder Include="Model\MySql\" />
     <Folder Include="Model\SqlServer\" />
   </ItemGroup>
   <ItemGroup>
@@ -298,6 +314,12 @@
     <Content Include="Picture\三菱 MC 三帧软元件说明.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DayDayDB\DayDayDB.csproj">
+      <Project>{21d6a51e-ac32-4ea9-8686-a773fc0a85f7}</Project>
+      <Name>DayDayDB</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

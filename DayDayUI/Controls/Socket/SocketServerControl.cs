@@ -69,13 +69,13 @@ namespace DayDayUI.Controls
                 using (FileStream fs = new FileStream(logPath, FileMode.Create))
                 {
                     fs.Write(bytes, 1, length - 1);
-                    AppMessage.Logmsg($"Server：收到客户端{user}的文件，{fileName}");
+                    App.MainForm.LogMessage($"Server：收到客户端{user}的文件，{fileName}");
                 }
 
             }
             catch (Exception ex)
             {
-                AppMessage.Logmsg($"Server：保存时发生错误，" + ex.Message);
+                App.MainForm.LogMessage($"Server：保存时发生错误，" + ex.Message);
             }
         }
         private void onlinechange(string user, Socket accept, bool isUp)
@@ -119,12 +119,12 @@ namespace DayDayUI.Controls
                 //这表示最多有多少个等待连接的客户端可以排队等待服务器的接受（即调用 Accept()）处理。
                 socket.Listen(10);
 
-                AppMessage.Logmsg("Server：socket服务已开启");
+                App.MainForm.LogMessage("Server：socket服务已开启");
                 
             }
             catch (Exception ex)
             {
-                AppMessage.Logmsg("Server：socket服务开启失败，" + ex.Message);
+                App.MainForm.LogMessage("Server：socket服务开启失败，" + ex.Message);
                 btn_open.Enabled = true;
                 return;
             }
@@ -145,7 +145,7 @@ namespace DayDayUI.Controls
 
                 string client = accept.RemoteEndPoint.ToString();
 
-                AppMessage.Logmsg($"Server：客户端{client}上线");
+                App.MainForm.LogMessage($"Server：客户端{client}上线");
                 OnlineChange(client, accept, true);
 
                 //开启接受线程
@@ -173,14 +173,14 @@ namespace DayDayUI.Controls
                 }
                 catch (Exception)
                 {
-                    AppMessage.Logmsg($"Server：客户端{user}下线");
+                    App.MainForm.LogMessage($"Server：客户端{user}下线");
                     OnlineChange(user, accept, false);
                     break;
                 }
 
                 if (length == 0)
                 {
-                    AppMessage.Logmsg($"Server：客户端{user}下线：");
+                    App.MainForm.LogMessage($"Server：客户端{user}下线：");
                     OnlineChange(user, accept, false);
                     break;
                 }
@@ -192,7 +192,7 @@ namespace DayDayUI.Controls
                 {
                     //消息
                     string msg = Encoding.UTF8.GetString(bytes,1, bytes.Length - 1);
-                    AppMessage.Logmsg($"Server：收到客户端{user}的消息，" + msg);
+                    App.MainForm.LogMessage($"Server：收到客户端{user}的消息，" + msg);
 
                 }
                 else
@@ -283,7 +283,7 @@ namespace DayDayUI.Controls
 
         }
 
-        private void SendToClient(byte[] bytes,string logMsg="")
+        private void SendToClient(byte[] bytes,string LogMessage="")
         {
             if (!cb_sendAll.Checked)
             {

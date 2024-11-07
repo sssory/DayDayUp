@@ -1,5 +1,4 @@
-﻿using DayDayUI.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,7 +53,7 @@ namespace DayDayUI.Controls
             //2 创建文件
             try
             {
-                Sugar.MySql.DbFirst.Where(it => it == tableName).IsCreateAttribute().IsCreateDefaultValue().FormatClassName(it => it + "Model").CreateClassFile(folder, nameSpace);
+                DayDayDB.Sugar.MySql.DbFirst.Where(it => it == tableName).IsCreateAttribute().IsCreateDefaultValue().CreateClassFile(folder, nameSpace);
                 MessageBox.Show("成功");
 
 

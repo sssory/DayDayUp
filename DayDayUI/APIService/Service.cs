@@ -1,13 +1,16 @@
 ﻿using DayDayUI.Tools;
 using Microsoft.Owin.Hosting;
 using System;
+using System.Drawing;
 using System.Net.NetworkInformation;
+using System.Windows.Forms;
 
 namespace DayDayUI.APIService
 {
     internal class Service
     {
         private static IDisposable _disposable;
+
         private Service()
         {
 

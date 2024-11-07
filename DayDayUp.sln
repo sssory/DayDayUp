@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayDayUI", "DayDayUI\DayDayUI.csproj", "{75EB3DB0-5C0A-477B-8799-E4A5B692C26B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayDayDB", "DayDayDB\DayDayDB.csproj", "{21D6A51E-AC32-4EA9-8686-A773FC0A85F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{75EB3DB0-5C0A-477B-8799-E4A5B692C26B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75EB3DB0-5C0A-477B-8799-E4A5B692C26B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75EB3DB0-5C0A-477B-8799-E4A5B692C26B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21D6A51E-AC32-4EA9-8686-A773FC0A85F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21D6A51E-AC32-4EA9-8686-A773FC0A85F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21D6A51E-AC32-4EA9-8686-A773FC0A85F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21D6A51E-AC32-4EA9-8686-A773FC0A85F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

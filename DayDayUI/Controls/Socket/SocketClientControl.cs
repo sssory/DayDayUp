@@ -30,7 +30,7 @@ namespace DayDayUI.Controls
             SaveFile = savefile;
         }
         #region 消息
-        private void Logmsg(string msg)
+        private void LogMessage(string msg)
         {
             this.Invoke(new Action(() => {
 
@@ -75,13 +75,13 @@ namespace DayDayUI.Controls
                 {
                     fs.Write(bytes, 1, length - 1);
 
-                    Logmsg("Server文件：" + fileName);
+                    LogMessage("Server文件：" + fileName);
                 }
 
             }
             catch (Exception ex)
             {
-                Logmsg($"保存时发生错误，" + ex.Message);
+                LogMessage($"保存时发生错误，" + ex.Message);
             }
         }
         #endregion
@@ -97,12 +97,12 @@ namespace DayDayUI.Controls
             try
             {
                 socket.Connect(IPE);
-                Logmsg("socket服务已连接");
+                LogMessage("socket服务已连接");
             }
             catch (Exception ex)
             {
                 btn_open.Enabled = true;
-                Logmsg("socket服务连接失败，" + ex.Message.Replace("\r","").Replace("\n", ""));
+                LogMessage("socket服务连接失败，" + ex.Message.Replace("\r","").Replace("\n", ""));
                 return;
             }
 
@@ -124,13 +124,13 @@ namespace DayDayUI.Controls
                 }
                 catch (Exception)
                 {
-                    Logmsg($"连接已断线");
+                    LogMessage($"连接已断线");
                     break;
                 }
 
                 if (length == 0)
                 {
-                    Logmsg($"连接已断线");
+                    LogMessage($"连接已断线");
                     break;
                 }
 
@@ -139,7 +139,7 @@ namespace DayDayUI.Controls
                 {
                     //消息
                     string msg = Encoding.UTF8.GetString(bytes, 1, bytes.Length - 1);
-                    Logmsg("Server消息："+msg);
+                    LogMessage("Server消息："+msg);
                 }
                 else
                 {

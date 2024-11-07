@@ -1,0 +1,10 @@
+D:\UserBackup\su-fj\桌面\code\DayDayUp\DayDayDB\bin\Debug\DayDayDB.dll
+D:\UserBackup\su-fj\桌面\code\DayDayUp\DayDayDB\bin\Debug\DayDayDB.pdb
+D:\UserBackup\su-fj\桌面\code\DayDayUp\DayDayDB\bin\Debug\SqlSugar.dll
+D:\UserBackup\su-fj\桌面\code\DayDayUp\DayDayDB\obj\Debug\DayDayDB.csproj.AssemblyReference.cache
+D:\UserBackup\su-fj\桌面\code\DayDayUp\DayDayDB\obj\Debug\DayDayDB.csproj.CoreCompileInputs.cache
+D:\UserBackup\su-fj\桌面\code\DayDayUp\DayDayDB\obj\Debug\DayDayDB.csproj.Up2Date
+D:\UserBackup\su-fj\桌面\code\DayDayUp\DayDayDB\obj\Debug\DayDayDB.dll
+D:\UserBackup\su-fj\桌面\code\DayDayUp\DayDayDB\obj\Debug\DayDayDB.pdb
+D:\UserBackup\su-fj\桌面\code\DayDayUp\DayDayDB\bin\Debug\System.Configuration.ConfigurationManager.dll
+D:\UserBackup\su-fj\桌面\code\DayDayUp\DayDayDB\bin\Debug\System.Configuration.ConfigurationManager.xml

@@ -12,7 +12,7 @@ namespace DayDayUI.APIService.Controllers
         [HttpGet,Route("getPDSKXS")]
         public IHttpActionResult getPDSKXS(string P_CP_REV,string P_LINE,string P_MachineNo)
         {
-            AppMessage.Logmsg($"【getPDSKXS】-{P_CP_REV}");
+            App.MainForm.LogMessage($"【getPDSKXS】-{P_CP_REV}");
             return Json(new PDSKXS()
             {
                 SKXS = "11.18",

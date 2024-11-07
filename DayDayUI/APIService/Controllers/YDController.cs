@@ -12,7 +12,7 @@ namespace DayDayUI.APIService.Controllers
         [HttpPost,Route("DeviceHeartbeat")]
         public IHttpActionResult DeviceHeartbeat(Request_DeviceHeartbeat request)
         {
-            AppMessage.Logmsg($"【{request.machine_code}】-心跳");
+            App.MainForm.LogMessage($"【{request.machine_code}】-心跳");
             return Json(new Response()
             {
                 code = 0,
@@ -23,7 +23,7 @@ namespace DayDayUI.APIService.Controllers
         public IHttpActionResult DeviceAlarmReport(Request_DeviceAlarmReport request)
         {
             string type = request.alarm_staus == 1 ? "发生" : "复位";
-            AppMessage.Logmsg($"【{request.machine_code}】-报警{type} ---- "+ request.alarm_des);
+            App.MainForm.LogMessage($"【{request.machine_code}】-报警{type} ---- "+ request.alarm_des);
 
             return Json(new Response()
             {
@@ -34,7 +34,7 @@ namespace DayDayUI.APIService.Controllers
         [HttpPost,Route("DeviceDataReport")]
         public IHttpActionResult DeviceDataReport(Request_DeviceDataReport request)
         {
-            AppMessage.Logmsg($"【{request.machine_code}】-水："+ request.water_used+"，电："+request.electricity_used);
+            App.MainForm.LogMessage($"【{request.machine_code}】-水："+ request.water_used+"，电："+request.electricity_used);
 
             return Json(new Response()
             {
@@ -45,7 +45,7 @@ namespace DayDayUI.APIService.Controllers
         [HttpPost,Route("DeviceStatusReport")]
         public IHttpActionResult DeviceStatusReport(Request_DeviceStatusReport request)
         {
-            AppMessage.Logmsg($"【{request.machine_code}】-设备状态改变："+ request.status_code+request.status_name);
+            App.MainForm.LogMessage($"【{request.machine_code}】-设备状态改变："+ request.status_code+request.status_name);
 
             return Json(new Response()
             {
@@ -56,7 +56,7 @@ namespace DayDayUI.APIService.Controllers
         [HttpPost,Route("DeviceCraftReportExt")]
         public IHttpActionResult DeviceCraftReportExt(Request_DeviceCraftReportExt request)
         {
-            AppMessage.Logmsg($"【{request.machine_code}】-结批："+ request.details[0].lot_num);
+            App.MainForm.LogMessage($"【{request.machine_code}】-结批："+ request.details[0].lot_num);
 
             return Json(new Response()
             {
