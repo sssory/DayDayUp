@@ -1,4 +1,4 @@
-.vs/
-DayDayUI/.vs/
+**/.vs/
 DayDayUI/bin/
 DayDayUI/obj/
+*.user
