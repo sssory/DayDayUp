@@ -1,6 +1,6 @@
-﻿namespace DayDayUI.Controls
+﻿namespace DayDayUI.Pages.Socket
 {
-    partial class SocketClientControl
+    partial class Client
     {
         /// <summary> 
         /// 必需的设计器变量。

@@ -1,6 +1,6 @@
-﻿namespace DayDayUI.Controls
+﻿namespace DayDayUI.Pages.Tool
 {
-    partial class MailDemoControl
+    partial class MailBy163
     {
         /// <summary> 
         /// 必需的设计器变量。

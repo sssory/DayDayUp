@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
-namespace DayDayUI.Controls
+namespace DayDayUI.Pages.Tool
 {
-    public partial class MySqlBackUpControl : UserControl
+    public partial class SqlBackUp : UserControl
     {
-        public MySqlBackUpControl()
+        public SqlBackUp()
         {
             InitializeComponent();
         }

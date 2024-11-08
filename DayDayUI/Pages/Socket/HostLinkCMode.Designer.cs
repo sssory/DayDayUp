@@ -1,7 +1,7 @@
 ﻿
-namespace DayDayUI.Controls
+namespace DayDayUI.Pages.Socket
 {
-    partial class HostLinkCmodeControl
+    partial class HostLinkCMode
     {
         /// <summary> 
         /// 必需的设计器变量。

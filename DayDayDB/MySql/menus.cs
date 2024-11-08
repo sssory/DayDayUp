@@ -16,7 +16,6 @@ namespace DayDayDB.MySql
 
             this.Sort = Convert.ToInt32("0");
             this.ParentId = Convert.ToInt32("0");
-            this.ShowType = Convert.ToInt32("0");
 
         }
         /// <summary>
@@ -56,11 +55,11 @@ namespace DayDayDB.MySql
         public int ParentId { get; set; }
 
         /// <summary>
-        /// Desc:0选项卡1弹窗2事件
+        /// Desc:control选项卡form弹窗
         /// Default:0
         /// Nullable:False
-        /// </summary>           
-        public int ShowType { get; set; }
+        /// </summary>        
+        public string ShowType { get; set; }
 
         /// <summary>
         /// Desc:是否开机自启动

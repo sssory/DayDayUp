@@ -6,6 +6,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DayDayUI.Tools
@@ -13,38 +15,59 @@ namespace DayDayUI.Tools
     internal static class ControlHelper
     {
         #region 选项卡
-        internal static TabPage CreatePage(string Name, string Text)
+        /// <summary>
+        /// 打开窗体或控件
+        /// </summary>
+        /// <returns></returns>
+        internal static bool OpenForm(TabControl tab_body, menus menu)
         {
 
             try
             {
-                string[] arr = Name.Split('_');
-
-                string ControlName = $"{arr[arr.Length - 2]}Control";
                 // 获取当前程序集
                 Assembly currentAssembly = Assembly.GetExecutingAssembly();
-
-                // 创建用户控件实例
-                var userControl = (UserControl)currentAssembly.CreateInstance($"DayDayUI.Controls.{ControlName}");
-                
-                // 创建 TabPage 并将用户控件添加进去
-                TabPage tabPage = new TabPage(Text)
+                if (menu.ShowType=="control")
                 {
-                    // 设置 TabPage 的内容为用户控件
-                    Name = Name,
-                    Controls = { userControl }
-                };
-                tabPage.ContextMenuStrip = new ContextMenuStrip();
-                tabPage.ContextMenuStrip.Items.Add("关闭");
-                userControl.Dock = DockStyle.Fill; // 设置用户控件填充整个 TabPage
+                    foreach (TabPage page in tab_body.TabPages)
+                    {
+                        if (page.Name == menu.Code)
+                        {
+                            tab_body.SelectedIndex = tab_body.TabPages.IndexOf(page);
+                            return true;
+                        }
+                    }
 
-                return tabPage;
+                    // 创建用户控件实例
+                    var userControl = (UserControl)currentAssembly.CreateInstance($"DayDayUI.Pages.{menu.Code.Replace("_",".")}");
+
+                    // 创建 TabPage 并将用户控件添加进去
+                    TabPage tabPage = new TabPage(menu.Name)
+                    {
+                        // 设置 TabPage 的内容为用户控件
+                        Name = menu.Code,
+                        Controls = { userControl }
+                    };
+                    userControl.Dock = DockStyle.Fill; // 设置用户控件填充整个 TabPage
+                    tab_body.TabPages.Add(tabPage);
+                    tab_body.SelectedIndex = tab_body.TabPages.Count - 1;
+                }
+                else if (menu.ShowType == "form")
+                {
+                    // 创建用户控件实例
+                    var form = (Form)currentAssembly.CreateInstance($"DayDayUI.Pages.{menu.Code.Replace("_", ".")}Form");
+                    form.Show();
+                }
+
+
+                return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show($"An error occurred while loading the control: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
+                return false;
             }
+
+
+
 
         }
         internal static void InitPage<T>(TabControl tabBody, object sender) where T : UserControl, new()

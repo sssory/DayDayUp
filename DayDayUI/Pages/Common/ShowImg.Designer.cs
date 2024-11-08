@@ -1,7 +1,7 @@
 ﻿
-namespace DayDayUI.picture
+namespace DayDayUI.Pages.Common
 {
-    partial class McEthernetShow
+    partial class ShowImg
     {
         /// <summary>
         /// Required designer variable.

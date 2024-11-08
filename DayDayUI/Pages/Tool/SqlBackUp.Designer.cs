@@ -1,6 +1,6 @@
-﻿namespace DayDayUI.Controls
+﻿namespace DayDayUI.Pages.Tool
 {
-    partial class MySqlBackUpControl
+    partial class SqlBackUp
     {
         /// <summary> 
         /// 必需的设计器变量。

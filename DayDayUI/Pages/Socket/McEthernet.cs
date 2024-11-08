@@ -1,26 +1,19 @@
 ﻿using System;
 using DayDayUI.Tools;
-
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 using System.IO;
 using System.Threading;
 using System.Reflection;
-using DayDayUI.picture;
+using DayDayUI.Pages.Common;
 
-namespace DayDayUI.Controls
+namespace DayDayUI.Pages.Socket
 {
-    public partial class McEthernetClientControl : UserControl
+    public partial class McEthernet : UserControl
     {
-        public McEthernetClientControl()
+        public McEthernet()
         {
             InitializeComponent();
         }
@@ -71,7 +64,7 @@ namespace DayDayUI.Controls
                 LogMessage($"保存时发生错误，" + ex.Message);
             }
         }
-        private Socket socket = null;
+        private System.Net.Sockets.Socket socket = null;
         #region 消息
         private void LogMessage(string msg)
         {
@@ -131,7 +124,7 @@ namespace DayDayUI.Controls
         private void btn_open_Click(object sender, EventArgs e)
         {
             btn_open.Enabled = false;
-            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            socket = new System.Net.Sockets.Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPAddress address = IPAddress.Parse(txt_ip.Text.Trim());
             IPEndPoint IPE = new IPEndPoint(address, int.Parse(txt_port.Text.Trim()));
 
@@ -514,8 +507,8 @@ namespace DayDayUI.Controls
         {
             try
             {
-                string filepath = Path.Combine(appPath, "picture\\三菱 MC 三帧指令说明.jpg");
-                McEthernetShow mcEthernetShow = new McEthernetShow(filepath);
+                string filepath = Path.Combine(appPath, "Resources\\Img\\三菱 MC 三帧指令说明.jpg");
+                ShowImg mcEthernetShow = new ShowImg(filepath);
                 mcEthernetShow.ShowDialog();
             }
             catch (Exception ex)
@@ -527,8 +520,8 @@ namespace DayDayUI.Controls
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string filepath = Path.Combine(appPath, "picture\\三菱 MC 三帧软元件说明.jpg");
-            McEthernetShow mcEthernetShow = new McEthernetShow(filepath);
+            string filepath = Path.Combine(appPath, "Resources\\Img\\三菱 MC 三帧软元件说明.jpg");
+            ShowImg mcEthernetShow = new ShowImg(filepath);
             mcEthernetShow.ShowDialog();
         }
 
@@ -543,8 +536,8 @@ namespace DayDayUI.Controls
         {
             try
             {
-                string filepath = Path.Combine(appPath, "picture\\三菱 MC 三帧报文详情说明.jpg");
-                McEthernetShow mcEthernetShow = new McEthernetShow(filepath);
+                string filepath = Path.Combine(appPath, "Resources\\Img\\三菱 MC 三帧报文详情说明.jpg");
+                ShowImg mcEthernetShow = new ShowImg(filepath);
                 mcEthernetShow.ShowDialog();
             }
             catch (Exception ex)

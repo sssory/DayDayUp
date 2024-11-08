@@ -1,7 +1,7 @@
 ﻿
-namespace DayDayUI.Controls
+namespace DayDayUI.Pages.Socket
 {
-    partial class McEthernetClientControl
+    partial class McEthernet
     {
         /// <summary> 
         /// 必需的设计器变量。

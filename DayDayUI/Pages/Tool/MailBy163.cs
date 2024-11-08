@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DayDayUI.Tools;
-namespace DayDayUI.Controls
+namespace DayDayUI.Pages.Tool
 {
-    public partial class MailDemoControl : UserControl
+    public partial class MailBy163 : UserControl
     {
-        public MailDemoControl()
+        public MailBy163()
         {
             InitializeComponent();
         }

@@ -1,20 +1,13 @@
-﻿using DayDayUI.picture;
+﻿using DayDayUI.Pages.Common;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DayDayUI.Controls
+namespace DayDayUI.Pages.Socket
 {
-    public partial class HostLinkCmodeControl : UserControl
+    public partial class HostLinkCMode : UserControl
     {
-        public HostLinkCmodeControl()
+        public HostLinkCMode()
         {
             InitializeComponent();
         }
@@ -99,8 +92,8 @@ namespace DayDayUI.Controls
         {
             try
             {
-                string filepath = Path.Combine(appPath, "picture\\欧姆龙HostLink报文详情说明.png");
-                McEthernetShow mcEthernetShow = new McEthernetShow(filepath);
+                string filepath = Path.Combine(appPath, "Resources\\Img\\欧姆龙HostLink报文详情说明.png");
+                ShowImg mcEthernetShow = new ShowImg(filepath);
                 mcEthernetShow.ShowDialog();
             }
             catch (Exception ex)
@@ -114,8 +107,8 @@ namespace DayDayUI.Controls
         {
             try
             {
-                string filepath = Path.Combine(appPath, "picture\\欧姆龙HostLink 返回报文详情说明.jpg");
-                McEthernetShow mcEthernetShow = new McEthernetShow(filepath);
+                string filepath = Path.Combine(appPath, "Resources\\Img\\欧姆龙HostLink 返回报文详情说明.jpg");
+                ShowImg mcEthernetShow = new ShowImg(filepath);
                 mcEthernetShow.ShowDialog();
             }
             catch (Exception ex)
@@ -129,8 +122,8 @@ namespace DayDayUI.Controls
         {
             try
             {
-                string filepath = Path.Combine(appPath, "picture\\欧姆龙HostLink存储区说明.jpg");
-                McEthernetShow mcEthernetShow = new McEthernetShow(filepath);
+                string filepath = Path.Combine(appPath, "Resources\\Img\\欧姆龙HostLink存储区说明.jpg");
+                ShowImg mcEthernetShow = new ShowImg(filepath);
                 mcEthernetShow.ShowDialog();
             }
             catch (Exception ex)

@@ -141,65 +141,47 @@
     <Compile Include="APIService\Service.cs" />
     <Compile Include="APIService\Controllers\DefaultController.cs" />
     <Compile Include="APIService\Startup.cs" />
-    <Compile Include="Controls\API\ServiceHongyuenControl.cs">
+    <Compile Include="Pages\Tool\MailBy163.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\API\ServiceHongyuenControl.Designer.cs">
-      <DependentUpon>ServiceHongyuenControl.cs</DependentUpon>
+    <Compile Include="Pages\Tool\MailBy163.Designer.cs">
+      <DependentUpon>MailBy163.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\API\ServiceYDControl.cs">
+    <Compile Include="Pages\Socket\HostLinkCMode.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\API\ServiceYDControl.Designer.cs">
-      <DependentUpon>ServiceYDControl.cs</DependentUpon>
+    <Compile Include="Pages\Socket\HostLinkCMode.Designer.cs">
+      <DependentUpon>HostLinkCMode.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\API\ServiceSiheControl.cs">
+    <Compile Include="Pages\Socket\McEthernet.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\API\ServiceSiheControl.Designer.cs">
-      <DependentUpon>ServiceSiheControl.cs</DependentUpon>
+    <Compile Include="Pages\Socket\McEthernet.Designer.cs">
+      <DependentUpon>McEthernet.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Mail\MailDemoControl.cs">
+    <Compile Include="Pages\Socket\Client.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Mail\MailDemoControl.Designer.cs">
-      <DependentUpon>MailDemoControl.cs</DependentUpon>
+    <Compile Include="Pages\Socket\Client.Designer.cs">
+      <DependentUpon>Client.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Socket\HostLinkCmodeControl.cs">
+    <Compile Include="Pages\Socket\Server.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Socket\HostLinkCmodeControl.Designer.cs">
-      <DependentUpon>HostLinkCmodeControl.cs</DependentUpon>
+    <Compile Include="Pages\Socket\Server.Designer.cs">
+      <DependentUpon>Server.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Socket\McEthernetClientControl.cs">
+    <Compile Include="Pages\Tool\SqlBackUp.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Socket\McEthernetClientControl.Designer.cs">
-      <DependentUpon>McEthernetClientControl.cs</DependentUpon>
+    <Compile Include="Pages\Tool\SqlBackUp.Designer.cs">
+      <DependentUpon>SqlBackUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Socket\SocketClientControl.cs">
+    <Compile Include="Pages\Tool\SugarHelper.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\Socket\SocketClientControl.Designer.cs">
-      <DependentUpon>SocketClientControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Socket\SocketServerControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\Socket\SocketServerControl.Designer.cs">
-      <DependentUpon>SocketServerControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Studio\MySqlBackUpControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\Studio\MySqlBackUpControl.Designer.cs">
-      <DependentUpon>MySqlBackUpControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\Studio\SugarModelControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\Studio\SugarModelControl.Designer.cs">
-      <DependentUpon>SugarModelControl.cs</DependentUpon>
+    <Compile Include="Pages\Tool\SugarHelper.Designer.cs">
+      <DependentUpon>SugarHelper.cs</DependentUpon>
     </Compile>
     <Compile Include="DayDayForm.cs">
       <SubType>Form</SubType>
@@ -207,11 +189,11 @@
     <Compile Include="DayDayForm.Designer.cs">
       <DependentUpon>DayDayForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Socket\McEthernetShow.cs">
+    <Compile Include="Pages\Common\ShowImg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Socket\McEthernetShow.Designer.cs">
-      <DependentUpon>McEthernetShow.cs</DependentUpon>
+    <Compile Include="Pages\Common\ShowImg.Designer.cs">
+      <DependentUpon>ShowImg.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -221,42 +203,33 @@
     <Compile Include="Tools\ExtendMethods.cs" />
     <Compile Include="Tools\HttpSend.cs" />
     <Compile Include="Tools\Mail.cs" />
-    <EmbeddedResource Include="Controls\API\ServiceHongyuenControl.resx">
-      <DependentUpon>ServiceHongyuenControl.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\Tool\MailBy163.resx">
+      <DependentUpon>MailBy163.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\API\ServiceYDControl.resx">
-      <DependentUpon>ServiceYDControl.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\Socket\HostLinkCMode.resx">
+      <DependentUpon>HostLinkCMode.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\API\ServiceSiheControl.resx">
-      <DependentUpon>ServiceSiheControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Mail\MailDemoControl.resx">
-      <DependentUpon>MailDemoControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Socket\HostLinkCmodeControl.resx">
-      <DependentUpon>HostLinkCmodeControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Socket\McEthernetClientControl.resx">
-      <DependentUpon>McEthernetClientControl.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\Socket\McEthernet.resx">
+      <DependentUpon>McEthernet.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Socket\SocketClientControl.resx">
-      <DependentUpon>SocketClientControl.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\Socket\Client.resx">
+      <DependentUpon>Client.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Socket\SocketServerControl.resx">
-      <DependentUpon>SocketServerControl.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\Socket\Server.resx">
+      <DependentUpon>Server.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Studio\MySqlBackUpControl.resx">
-      <DependentUpon>MySqlBackUpControl.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\Tool\SqlBackUp.resx">
+      <DependentUpon>SqlBackUp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\Studio\SugarModelControl.resx">
-      <DependentUpon>SugarModelControl.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\Tool\SugarHelper.resx">
+      <DependentUpon>SugarHelper.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DayDayForm.resx">
       <DependentUpon>DayDayForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Socket\McEthernetShow.resx">
-      <DependentUpon>McEthernetShow.cs</DependentUpon>
+    <EmbeddedResource Include="Pages\Common\ShowImg.resx">
+      <DependentUpon>ShowImg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -281,37 +254,33 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Forms\ToolStrip\" />
-    <Folder Include="Model\MySql\" />
-    <Folder Include="Model\SqlServer\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Picture\shezhi.ico">
+    <Content Include="Resources\Icon\shezhi.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Picture\欧姆龙HostLink 返回报文详情说明.jpg">
+    <Content Include="Resources\Img\欧姆龙HostLink 返回报文详情说明.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Picture\欧姆龙HostLink存储区说明.jpg">
+    <Content Include="Resources\Img\欧姆龙HostLink存储区说明.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Picture\欧姆龙HostLink报文详情说明.png">
+    <Content Include="Resources\Img\欧姆龙HostLink报文详情说明.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Picture\计算器.ico">
+    <Content Include="Resources\Icon\计算器.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Picture\计算器.png">
+    <Content Include="Resources\Img\计算器.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Picture\三菱 MC 三帧报文详情说明.jpg">
+    <Content Include="Resources\Img\三菱 MC 三帧报文详情说明.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Picture\三菱 MC 三帧指令说明.jpg">
+    <Content Include="Resources\Img\三菱 MC 三帧指令说明.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Picture\三菱 MC 三帧软元件说明.jpg">
+    <Content Include="Resources\Img\三菱 MC 三帧软元件说明.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -14,11 +14,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DayDayUI.Controls
+namespace DayDayUI.Pages.Socket
 {
-    public partial class SocketClientControl : UserControl
+    public partial class Client : UserControl
     {
-        public SocketClientControl()
+        public Client()
         {
             InitializeComponent();
         }
@@ -86,11 +86,11 @@ namespace DayDayUI.Controls
         }
         #endregion
 
-        private Socket socket = null;
+        private System.Net.Sockets.Socket socket = null;
         private void btn_open_Click(object sender, EventArgs e)
         {
             btn_open.Enabled = false;
-            socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            socket = new System.Net.Sockets.Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPAddress address = IPAddress.Parse(txt_ip.Text.Trim());
             IPEndPoint IPE = new IPEndPoint(address, int.Parse(txt_port.Text.Trim()));
             

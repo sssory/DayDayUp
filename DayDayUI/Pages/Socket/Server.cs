@@ -4,22 +4,19 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DayDayUI.Controls
+namespace DayDayUI.Pages.Socket
 {
-    public partial class SocketServerControl : UserControl
+    public partial class Server : UserControl
     {
-        public SocketServerControl()
+        public Server()
         {
             InitializeComponent();
         }
@@ -34,11 +31,11 @@ namespace DayDayUI.Controls
         }
 
 
-        public Socket socket = null;
+        public System.Net.Sockets.Socket socket = null;
 
-        public Dictionary<string,Socket> clients = new Dictionary<string, Socket>();
+        public Dictionary<string, System.Net.Sockets.Socket> clients = new Dictionary<string, System.Net.Sockets.Socket>();
 
-        private delegate void OnlineChangeDelegate(string user, Socket accept, bool isUp);
+        private delegate void OnlineChangeDelegate(string user, System.Net.Sockets.Socket accept, bool isUp);
         private delegate void SaveFileDelegate(byte[] bytes, int length,string user);
 
         private OnlineChangeDelegate OnlineChange;
@@ -78,7 +75,7 @@ namespace DayDayUI.Controls
                 App.MainForm.LogMessage($"Server：保存时发生错误，" + ex.Message);
             }
         }
-        private void onlinechange(string user, Socket accept, bool isUp)
+        private void onlinechange(string user, System.Net.Sockets.Socket accept, bool isUp)
         {
             if (lb_online.InvokeRequired)
             {
@@ -105,7 +102,7 @@ namespace DayDayUI.Controls
             btn_open.Enabled = false;
 
             //创建负责监听的套接字
-            socket = new Socket(AddressFamily.InterNetwork,SocketType.Stream,ProtocolType.Tcp);
+            socket = new System.Net.Sockets.Socket(AddressFamily.InterNetwork,SocketType.Stream,ProtocolType.Tcp);
             //根据ip和port创建IPE对象
             IPAddress address = IPAddress.Parse(txt_ip.Text.Trim());
             IPEndPoint IPE = new IPEndPoint(address, int.Parse(txt_port.Text.Trim()));
@@ -141,7 +138,7 @@ namespace DayDayUI.Controls
             while (true)
             {
                 //一旦监听到客户端连接 便会创建一个套接字
-                Socket accept = socket.Accept();//这里会阻塞  直到收到连接
+                System.Net.Sockets.Socket accept = socket.Accept();//这里会阻塞  直到收到连接
 
                 string client = accept.RemoteEndPoint.ToString();
 
@@ -157,7 +154,7 @@ namespace DayDayUI.Controls
 
         private void ReceiveMsg(object acceptObj)
         {
-            Socket accept = acceptObj as Socket;
+            System.Net.Sockets.Socket accept = acceptObj as System.Net.Sockets.Socket;
             string user = accept.RemoteEndPoint.ToString();
 
             while (true)
@@ -290,7 +287,7 @@ namespace DayDayUI.Controls
                 //发送选中
                 foreach (var item in lb_online.SelectedItems)
                 {
-                    Socket value = null;
+                    System.Net.Sockets.Socket value = null;
                     clients.TryGetValue(item.ToString(), out value);
                     if (value != null) value.Send(bytes);
                 }

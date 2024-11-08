@@ -9,12 +9,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace DayDayUI.picture
+namespace DayDayUI.Pages.Common
 {
-    public partial class McEthernetShow : Form
+    public partial class ShowImg : Form
     {
         string FileName = "";
-        public McEthernetShow(string fileName)
+        public ShowImg(string fileName)
         {
             FileName = fileName;
             InitializeComponent();

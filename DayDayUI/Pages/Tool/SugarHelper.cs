@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
-namespace DayDayUI.Controls
+namespace DayDayUI.Pages.Tool
 {
-    public partial class SugarModelControl : UserControl
+    public partial class SugarHelper : UserControl
     {
-        public SugarModelControl()
+        public SugarHelper()
         {
             InitializeComponent();
         }

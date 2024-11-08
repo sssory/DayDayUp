@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DayDayUI
 {
@@ -71,6 +72,69 @@ namespace DayDayUI
 
         #endregion
 
+        #region 右键关闭
+        private ContextMenuStrip contextMenu; // 定义上下文菜单
+        private int selectedTabIndex = -1;    // 存储被右键点击的选项卡索引
+        private void InitializeContextMenu()
+        {
+            // 创建上下文菜单并添加“关闭”项
+            contextMenu = new ContextMenuStrip();
+            ToolStripMenuItem closeItem = new ToolStripMenuItem("close");
+            ToolStripMenuItem closeOther = new ToolStripMenuItem("close other");
+            closeItem.Click += CloseItem_Click; // 添加关闭事件
+            closeOther.Click += CloseItem_Click; // 添加关闭事件
+            contextMenu.Items.Add(closeItem);
+            contextMenu.Items.Add(closeOther);
+        }
+        private void CloseItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem thisMenu = sender as ToolStripMenuItem;
+            // 检查索引有效性，然后关闭对应选项卡
+
+            if (thisMenu.Text == "close")
+            {
+                if (selectedTabIndex >= 0 && selectedTabIndex < tab_body.TabCount)
+                {
+                    tab_body.TabPages.RemoveAt(selectedTabIndex);
+                    selectedTabIndex = -1; // 重置索引
+                }
+            }
+            else
+            {
+                foreach (TabPage item in tab_body.TabPages)
+                {
+                    int index = tab_body.TabPages.IndexOf(item);
+                    if (index != selectedTabIndex)
+                    {
+                        tab_body.TabPages.RemoveAt(index);
+                        selectedTabIndex--;
+                    }
+                }
+            }
+
+        }
+
+        private void tab_body_MouseUp(object sender, MouseEventArgs e)
+        {
+            // 检查是否为右键单击
+            if (e.Button == MouseButtons.Right)
+            {
+                // 获取鼠标点击的选项卡索引
+                for (int i = 0; i < tab_body.TabCount; i++)
+                {
+                    if (tab_body.GetTabRect(i).Contains(e.Location))
+                    {
+                        // 找到右键单击的选项卡，触发事件
+                        contextMenu.Show(tab_body, e.Location);
+                        selectedTabIndex = i;
+                        break;
+                    }
+                }
+            }
+        }
+
+        #endregion
+
         #region 头部菜单
         List<menus> list = new List<menus>();
         private void LoadMenus()
@@ -111,141 +175,33 @@ namespace DayDayUI
 
         public void NewItem_Click(object sender, EventArgs e, menus menu)
         {
+            bool isok = false;
+            if (!string.IsNullOrEmpty(menu.ShowType)) isok = ControlHelper.OpenForm(this.tab_body,menu);
+
             switch (menu.Code)
             {
-                case "m_Base_OpenService":
+                case "Base_OpenService":
                     APIService.Service.sercives.Start();
                     LoadServiceStatus();
                     break;
-                case "m_Base_CloseService":
+                case "Base_CloseService":
                     APIService.Service.sercives.Stop();
                     LoadServiceStatus();
                     break;
-                case "m_Base_ClearMessage":
+                case "Base_ClearMessage":
                     txt_msg.Text = string.Empty;
                     break;
-                case "m_Base_Reload":
-                    App.MainForm.LogMessage("功能开发中。。。");
+                case "Base_ReloadDayDayUp":
+                    App.MainForm.LogMessage("功能开发中...");
+                    break;
+                default:
+                    if (menu.ParentId != 0 && !isok) App.MainForm.LogMessage("请配置菜单功能...");
                     break;
             }
-        }
 
-        private void AddClickEventToMenuItems(ToolStripItemCollection menuItems)
-        {
-            foreach (ToolStripItem item in menuItems)
-            {
-                if (item is ToolStripMenuItem menuItem)
-                {
-                    // 添加点击事件
-                    menuItem.Click += MenuItem_Click; ;
-
-                    // 如果有子菜单项，递归调用
-                    if (menuItem.DropDownItems.Count > 0)
-                    {
-                        AddClickEventToMenuItems(menuItem.DropDownItems);
-                    }
-                }
-            }
-        }
-
-        private void MenuItem_Click(object sender, EventArgs e)
-        {
-
-            ToolStripMenuItem menu = sender as ToolStripMenuItem;
-
-            string[] arr = menu.Name.Split('_');
-
-            if (arr.Length < 2)
-            {
-                return;
-            }
-
-            if (arr[arr.Length - 1] == "C")
-            {
-
-                if (tab_body.TabPages.ContainsKey(menu.Name))
-                {
-                    foreach (TabPage page in tab_body.TabPages)
-                        if (page.Name == menu.Name)
-                            tab_body.SelectedIndex = tab_body.TabPages.IndexOf(page);
-
-                    return;
-                }
-
-                var newPage = ControlHelper.CreatePage(menu.Name, menu.Text);
-
-                if (newPage != null)
-                {
-                    tab_body.TabPages.Add(newPage);
-
-                    tab_body.SelectedIndex = tab_body.TabPages.Count - 1;
-                }
-            }
 
         }
-
         #endregion
 
-        #region 右键关闭
-        private ContextMenuStrip contextMenu; // 定义上下文菜单
-        private int selectedTabIndex = -1;    // 存储被右键点击的选项卡索引
-        private void InitializeContextMenu()
-        {
-            // 创建上下文菜单并添加“关闭”项
-            contextMenu = new ContextMenuStrip();
-            ToolStripMenuItem closeItem = new ToolStripMenuItem("close");
-            ToolStripMenuItem closeOther = new ToolStripMenuItem("close other");
-            closeItem.Click += CloseItem_Click; // 添加关闭事件
-            closeOther.Click += CloseItem_Click; // 添加关闭事件
-            contextMenu.Items.Add(closeItem);
-            contextMenu.Items.Add(closeOther);
-        }
-        private void CloseItem_Click(object sender, EventArgs e)
-        {
-            ToolStripMenuItem thisMenu = sender as ToolStripMenuItem;
-            // 检查索引有效性，然后关闭对应选项卡
-
-            if (thisMenu.Text == "close")
-            {
-                if (selectedTabIndex >= 0 && selectedTabIndex < tab_body.TabCount)
-                {
-                    tab_body.TabPages.RemoveAt(selectedTabIndex);
-                    selectedTabIndex = -1; // 重置索引
-                }
-            }
-            else
-            {
-                foreach (TabPage item in tab_body.TabPages)
-                {
-                    int index = tab_body.TabPages.IndexOf(item);
-                    if (index != selectedTabIndex) { 
-                        tab_body.TabPages.RemoveAt(index);
-                        selectedTabIndex--;
-                    }
-                }
-            }
-
-        }
-
-        private void tab_body_MouseUp(object sender, MouseEventArgs e)
-        {
-            // 检查是否为右键单击
-            if (e.Button == MouseButtons.Right)
-            {
-                // 获取鼠标点击的选项卡索引
-                for (int i = 0; i < tab_body.TabCount; i++)
-                {
-                    if (tab_body.GetTabRect(i).Contains(e.Location))
-                    {
-                        // 找到右键单击的选项卡，触发事件
-                        contextMenu.Show(tab_body, e.Location);
-                        selectedTabIndex = i;
-                        break;
-                    }
-                }
-            }
-        }
-
-        #endregion
     }
 }
