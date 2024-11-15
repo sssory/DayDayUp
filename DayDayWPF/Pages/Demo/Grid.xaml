@@ -1,0 +1,28 @@
+﻿<Window x:Class="View.View.Demos.Grid"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View.View.Demos"
+        mc:Ignorable="d"
+        Title="Grid面板" Height="250" Width="400" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"></ColumnDefinition>
+            <ColumnDefinition Width="50*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Name="lblTitle" Content="请输入留言：" Height="25" Margin="10,2" Grid.Row="0" Grid.Column="0"  ></Label>
+        <ComboBox Name="cbbType" Margin="5" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" ></ComboBox>
+        <TextBox Name="txtInput" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"/>
+        <Button Name="btnSubmit" Content="提交" Grid.Row="2" Grid.Column="2" Margin="5" Width="80"></Button>
+        <Button Name="btnClose" Content="关闭" Grid.Row="2" Grid.Column="3" Margin="5" Width="80"></Button>
+    </Grid>
+</Window>
