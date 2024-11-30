@@ -1,5 +1,5 @@
-﻿using DayDayDB;
-using DayDayDB.MySql;
+﻿using DataBase;
+using DataBase.MySql;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

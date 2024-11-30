@@ -1,5 +1,5 @@
-﻿using DayDayDB;
-using DayDayDB.MySql;
+﻿using DataBase;
+using DataBase.MySql;
 using DayDayWinForm.Pages.Common;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace DayDayWinForm.Tools
 {
     public static class App
     {
-        public static DayDayForm MainForm = Application.OpenForms["DayDayForm"] as DayDayForm;
+        public static DayDayWindow MainForm = Application.OpenForms["DayDayForm"] as DayDayWindow;
 
         public static users User = null;
 

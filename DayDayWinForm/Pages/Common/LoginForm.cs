@@ -1,5 +1,5 @@
-﻿using DayDayDB.MySql;
-using DayDayDB;
+﻿using DataBase.MySql;
+using DataBase;
 using DayDayWinForm.Tools;
 using System;
 using System.Collections.Generic;

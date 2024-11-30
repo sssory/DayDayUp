@@ -7,8 +7,8 @@
     <ProjectGuid>{21D6A51E-AC32-4EA9-8686-A773FC0A85F7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DayDayDB</RootNamespace>
-    <AssemblyName>DayDayDB</AssemblyName>
+    <RootNamespace>DataBase</RootNamespace>
+    <AssemblyName>DataBase</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

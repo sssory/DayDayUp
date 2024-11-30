@@ -2,7 +2,7 @@
 using System;
 using System.Configuration;
 
-namespace DayDayDB
+namespace DataBase
 {
     public class Sugar
     {

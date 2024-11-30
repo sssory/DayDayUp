@@ -16,7 +16,7 @@ namespace DayDayWinForm
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DayDayForm());
+            Application.Run(new DayDayWindow());
         }
     }
 }

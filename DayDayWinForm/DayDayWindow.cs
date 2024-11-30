@@ -1,6 +1,6 @@
 ﻿using Common;
-using DayDayDB;
-using DayDayDB.MySql;
+using DataBase;
+using DataBase.MySql;
 using DayDayWinForm.Pages.Common;
 using DayDayWinForm.Tools;
 using Newtonsoft.Json;
@@ -9,13 +9,14 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace DayDayWinForm
 {
-    public partial class DayDayForm : Form
+    public partial class DayDayWindow : Form
     {
-        public DayDayForm()
+        public DayDayWindow()
         {
             InitializeComponent();
         }
@@ -23,7 +24,7 @@ namespace DayDayWinForm
         private void DayDayForm_Load(object sender, EventArgs e)
         {
             LogMessage = logmsg;
-            LoadMenus();   
+            LoadMenus();
         }
 
         
@@ -62,7 +63,6 @@ namespace DayDayWinForm
             
         }
         #endregion
-
 
         #region 状态栏
         public void LoadServiceStatus()
@@ -153,7 +153,7 @@ namespace DayDayWinForm
         #endregion
 
         #region 头部菜单
-        List<menus> list = new List<menus>();
+        List<DataBase.MySql.menus> list = new List<menus>();
         private void LoadMenus()
         {
             menu_head.Items.Clear();
@@ -266,6 +266,67 @@ namespace DayDayWinForm
 
         }
 
+
         #endregion
+
+        private void txtTime_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar==13)
+            {
+                DateTime dt = DateTime.Parse(txtTime.Text);
+                SetSystemDateTime.SetLocalTime(dt);
+            }
+        }
+        private void txtTime_Enter(object sender, EventArgs e)
+        {
+            txtTime.Text = DateTime.Now.ToString("yyyy-MM-dd 00:00:00");
+        }
+        private void btnDefault_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
+
+    #region 系统时间
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SystemTime
+    {
+        public ushort wYear;
+        public ushort wMonth;
+        public ushort wDayOfWeek;
+        public ushort wDay;
+        public ushort wHour;
+        public ushort wMinute;
+        public ushort wSecond;
+        public ushort wMiliseconds;
+    }
+    public class SetSystemDateTime
+    {
+        [DllImport("Kernel32.dll")]
+        public static extern bool SetLocalTime(ref SystemTime sysTime);
+
+        public static bool SetLocalTime(DateTime dt)
+        {
+            bool flag = false;
+            try
+            {
+                SystemTime sysTime = new SystemTime();
+                sysTime.wYear = Convert.ToUInt16(dt.Year);
+                sysTime.wMonth = Convert.ToUInt16(dt.Month);
+                sysTime.wDay = Convert.ToUInt16(dt.Day);
+                sysTime.wHour = Convert.ToUInt16(dt.Hour);
+                sysTime.wMinute = Convert.ToUInt16(dt.Minute);
+                sysTime.wSecond = Convert.ToUInt16(dt.Second);
+                flag = SetSystemDateTime.SetLocalTime(ref sysTime);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("SetSystemDateTime函数执行异常" + e.Message);
+            }
+            return flag;
+        }
+    }
+
+    #endregion
 }

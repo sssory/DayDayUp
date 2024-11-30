@@ -1,4 +1,4 @@
-﻿using DayDayDB;
+﻿using DataBase;
 using DayDayWinForm.Tools;
 using System;
 using System.Collections.Generic;
@@ -74,7 +74,7 @@ namespace DayDayWinForm.Pages.Tool
             //2 创建文件
             try
             {
-                DayDayDB.Sugar.MySql.DbFirst.Where(it => it == tableName).IsCreateAttribute().IsCreateDefaultValue().CreateClassFile(folder, nameSpace);
+                DataBase.Sugar.MySql.DbFirst.Where(it => it == tableName).IsCreateAttribute().IsCreateDefaultValue().CreateClassFile(folder, nameSpace);
                 MessageBox.Show("成功");
 
 

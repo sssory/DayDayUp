@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DayDayDB.MySql
+namespace DataBase.MySql
 {
     [SugarTable("logs")]
     public class logs

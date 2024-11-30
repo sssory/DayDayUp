@@ -1,6 +1,6 @@
 ﻿namespace DayDayWinForm
 {
-    partial class DayDayForm
+    partial class DayDayWindow
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DayDayForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DayDayWindow));
             this.menu_head = new System.Windows.Forms.MenuStrip();
             this.status_foot = new System.Windows.Forms.StatusStrip();
             this.status_foot_service = new System.Windows.Forms.ToolStripStatusLabel();
@@ -36,6 +36,8 @@
             this.txt_msg = new System.Windows.Forms.TextBox();
             this.tab_body = new System.Windows.Forms.TabControl();
             this.tab_body_main = new System.Windows.Forms.TabPage();
+            this.btnDefault = new System.Windows.Forms.Button();
+            this.txtTime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.status_foot.SuspendLayout();
             this.tab_body.SuspendLayout();
@@ -105,6 +107,8 @@
             // 
             // tab_body_main
             // 
+            this.tab_body_main.Controls.Add(this.btnDefault);
+            this.tab_body_main.Controls.Add(this.txtTime);
             this.tab_body_main.Controls.Add(this.label1);
             this.tab_body_main.Location = new System.Drawing.Point(4, 22);
             this.tab_body_main.Name = "tab_body_main";
@@ -113,6 +117,25 @@
             this.tab_body_main.TabIndex = 1;
             this.tab_body_main.Text = "welcome";
             this.tab_body_main.UseVisualStyleBackColor = true;
+            // 
+            // btnDefault
+            // 
+            this.btnDefault.Location = new System.Drawing.Point(12, 124);
+            this.btnDefault.Name = "btnDefault";
+            this.btnDefault.Size = new System.Drawing.Size(153, 23);
+            this.btnDefault.TabIndex = 2;
+            this.btnDefault.Text = "button";
+            this.btnDefault.UseVisualStyleBackColor = true;
+            this.btnDefault.Click += new System.EventHandler(this.btnDefault_Click);
+            // 
+            // txtTime
+            // 
+            this.txtTime.Location = new System.Drawing.Point(12, 74);
+            this.txtTime.Name = "txtTime";
+            this.txtTime.Size = new System.Drawing.Size(153, 21);
+            this.txtTime.TabIndex = 1;
+            this.txtTime.Enter += new System.EventHandler(this.txtTime_Enter);
+            this.txtTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTime_KeyPress);
             // 
             // label1
             // 
@@ -164,6 +187,8 @@
         private System.Windows.Forms.TabPage tab_body_main;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripStatusLabel status_foot_user;
+        private System.Windows.Forms.TextBox txtTime;
+        private System.Windows.Forms.Button btnDefault;
     }
 }
 
