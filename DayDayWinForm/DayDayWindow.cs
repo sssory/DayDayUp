@@ -21,7 +21,7 @@ namespace DayDayWinForm
             InitializeComponent();
         }
 
-        private void DayDayForm_Load(object sender, EventArgs e)
+        private void DayDayWindow_Load(object sender, EventArgs e)
         {
             LogMessage = logmsg;
             LoadMenus();
@@ -60,7 +60,6 @@ namespace DayDayWinForm
             {
                 LogError.Write(ex);
             }
-            
         }
         #endregion
 
@@ -236,7 +235,7 @@ namespace DayDayWinForm
             }
         }
 
-        private void DayDayForm_KeyDown(object sender, KeyEventArgs e)
+        private void DayDayWindow_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F5)
             {

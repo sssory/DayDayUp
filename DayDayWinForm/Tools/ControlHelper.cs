@@ -38,7 +38,6 @@ namespace DayDayWinForm.Tools
                     int x = Math.Max(App.MainForm.Left, Math.Min(App.MainForm.Right - form.Width, App.MainForm.Left + (App.MainForm.Width - form.Width) / 2));
                     int y = Math.Max(App.MainForm.Top, Math.Min(App.MainForm.Bottom - form.Height, App.MainForm.Top + (App.MainForm.Height - form.Height) / 2));
                     form.StartPosition = FormStartPosition.CenterParent;
-               
                     form.ShowDialog();
                 }
 
@@ -89,22 +88,5 @@ namespace DayDayWinForm.Tools
         }
 
         #endregion
-
-        internal static List<string> GetColumns(this DataTable dataTable)
-        {
-            List<string> strings = new List<string>();
-
-            if (dataTable == null)
-            {
-                return strings;
-            }
-
-            foreach (DataColumn item in dataTable.Columns)
-            {
-                strings.Add(item.ColumnName);
-            }
-
-            return strings;
-        }
     }
 }

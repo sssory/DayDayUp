@@ -148,7 +148,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Day Day Up";
             // 
-            // DayDayForm
+            // DayDayWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -161,12 +161,12 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menu_head;
-            this.Name = "DayDayForm";
+            this.Name = "DayDayWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DayDayUp";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.DayDayForm_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DayDayForm_KeyDown);
+            this.Load += new System.EventHandler(this.DayDayWindow_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DayDayWindow_KeyDown);
             this.status_foot.ResumeLayout(false);
             this.status_foot.PerformLayout();
             this.tab_body.ResumeLayout(false);

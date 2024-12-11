@@ -5,13 +5,15 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBase", "DayDayDB\DataBase.csproj", "{21D6A51E-AC32-4EA9-8686-A773FC0A85F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayDayWPF", "DayDayWPF\DayDayWPF.csproj", "{C4E0757A-3DB4-4B0E-BE25-DED54A0FD059}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Tools\Common.csproj", "{B9606609-CCFC-48D2-B474-7C7839075DB1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communicate", "Communicate\Communicate.csproj", "{7796993C-5AD7-48D2-986C-541D335A2726}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayDayWinForm", "DayDayWinForm\DayDayWinForm.csproj", "{75EB3DB0-5C0A-477B-8799-E4A5B692C26B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "WpfApp\WpfApp.csproj", "{988F11B6-EA01-4082-BEFC-57F15C60EE67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{4D0C06F8-3A9E-47C6-8AF1-6D93E3CEB751}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +25,6 @@ Global
 		{21D6A51E-AC32-4EA9-8686-A773FC0A85F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21D6A51E-AC32-4EA9-8686-A773FC0A85F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21D6A51E-AC32-4EA9-8686-A773FC0A85F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C4E0757A-3DB4-4B0E-BE25-DED54A0FD059}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C4E0757A-3DB4-4B0E-BE25-DED54A0FD059}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C4E0757A-3DB4-4B0E-BE25-DED54A0FD059}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C4E0757A-3DB4-4B0E-BE25-DED54A0FD059}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B9606609-CCFC-48D2-B474-7C7839075DB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B9606609-CCFC-48D2-B474-7C7839075DB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9606609-CCFC-48D2-B474-7C7839075DB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +37,14 @@ Global
 		{75EB3DB0-5C0A-477B-8799-E4A5B692C26B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75EB3DB0-5C0A-477B-8799-E4A5B692C26B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75EB3DB0-5C0A-477B-8799-E4A5B692C26B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{988F11B6-EA01-4082-BEFC-57F15C60EE67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{988F11B6-EA01-4082-BEFC-57F15C60EE67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{988F11B6-EA01-4082-BEFC-57F15C60EE67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{988F11B6-EA01-4082-BEFC-57F15C60EE67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D0C06F8-3A9E-47C6-8AF1-6D93E3CEB751}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D0C06F8-3A9E-47C6-8AF1-6D93E3CEB751}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D0C06F8-3A9E-47C6-8AF1-6D93E3CEB751}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D0C06F8-3A9E-47C6-8AF1-6D93E3CEB751}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

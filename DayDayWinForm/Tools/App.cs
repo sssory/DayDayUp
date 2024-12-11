@@ -13,7 +13,7 @@ namespace DayDayWinForm.Tools
 {
     public static class App
     {
-        public static DayDayWindow MainForm = Application.OpenForms["DayDayForm"] as DayDayWindow;
+        public static DayDayWindow MainForm = Application.OpenForms["DayDayWindow"] as DayDayWindow;
 
         public static users User = null;
 

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -91,7 +92,6 @@ namespace DayDayWinForm.Pages.Tool
                 {
                     connection.Open();
 
-
                     // 获取执行路径
                     using (MySqlCommand command = new MySqlCommand("SELECT @@basedir AS basePath FROM DUAL", connection))
                     {
@@ -114,7 +114,7 @@ namespace DayDayWinForm.Pages.Tool
                             }
                         }
                     }
-
+                    
                     using (MySqlCommand command = new MySqlCommand("SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'scadacurcevalue' and TABLE_NAME like '%" + Convert.ToDateTime(txtTime.Text.Trim()).ToString("yyyyMM") + "'", connection))
                     {
                         using (MySqlDataReader reader = command.ExecuteReader())
