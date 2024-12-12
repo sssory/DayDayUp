@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using SqlSugar;
 
-namespace DayDayDB.MySql
+namespace DataBase.MySql
 {
     ///<summary>
     ///
