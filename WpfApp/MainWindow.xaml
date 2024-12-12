@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DayDayBackup"
         mc:Ignorable="d"
-        Title="Scada备份工具" Height="659" Width="940" WindowStartupLocation="CenterScreen" Icon="/Resources/数位学习.ico" Loaded="Window_Loaded">
+        Title="MySQL备份" Height="659" Width="940" WindowStartupLocation="CenterScreen" Icon="/Resources/数位学习.ico" Loaded="Window_Loaded">
     <Grid>
         <DockPanel>
             <ToolBar  DockPanel.Dock="Top" Height="30" >
@@ -29,9 +29,9 @@
 
                     <GroupBox Grid.Row="0" Header="筛选">
                         <Grid>
-                            <Button x:Name="btnCheck" Content="全选" Width="62" Click="btnCheck_Click" Background="#FFEEF5FD"   Margin="10,0,0,0"   HorizontalAlignment="Left" Height="21" VerticalAlignment="Center"  />
-                            <TextBox x:Name="txtKey" HorizontalAlignment="Left" Margin="116,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120" KeyDown="txtKey_KeyDown" FontSize="14"/>
-                            <Label Content="输入后按回车筛选文本" HorizontalAlignment="Left" Margin="234,0,0,0" VerticalAlignment="Center" FontSize="9"/>
+                            <Button x:Name="btnCheck" Content="全选" Width="62" Click="btnCheck_Click" Background="#FFEEF5FD"   Margin="20,0,0,0"   HorizontalAlignment="Left" Height="21" VerticalAlignment="Center"  />
+                            <TextBox x:Name="txtKey" HorizontalAlignment="Left" Margin="110,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120" KeyDown="txtKey_KeyDown" FontSize="14"/>
+                            <Label Content="输入后请按回车键" HorizontalAlignment="Left" Margin="229,0,0,0" VerticalAlignment="Center" FontSize="9"/>
                         </Grid>
                     </GroupBox>
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled" Grid.Row="1">
