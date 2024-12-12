@@ -36,7 +36,6 @@
             this.txt_msg = new System.Windows.Forms.TextBox();
             this.tab_body = new System.Windows.Forms.TabControl();
             this.tab_body_main = new System.Windows.Forms.TabPage();
-            this.btnDefault = new System.Windows.Forms.Button();
             this.txtTime = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.status_foot.SuspendLayout();
@@ -107,7 +106,6 @@
             // 
             // tab_body_main
             // 
-            this.tab_body_main.Controls.Add(this.btnDefault);
             this.tab_body_main.Controls.Add(this.txtTime);
             this.tab_body_main.Controls.Add(this.label1);
             this.tab_body_main.Location = new System.Drawing.Point(4, 22);
@@ -118,22 +116,13 @@
             this.tab_body_main.Text = "welcome";
             this.tab_body_main.UseVisualStyleBackColor = true;
             // 
-            // btnDefault
-            // 
-            this.btnDefault.Location = new System.Drawing.Point(12, 124);
-            this.btnDefault.Name = "btnDefault";
-            this.btnDefault.Size = new System.Drawing.Size(153, 23);
-            this.btnDefault.TabIndex = 2;
-            this.btnDefault.Text = "button";
-            this.btnDefault.UseVisualStyleBackColor = true;
-            this.btnDefault.Click += new System.EventHandler(this.btnDefault_Click);
-            // 
             // txtTime
             // 
-            this.txtTime.Location = new System.Drawing.Point(12, 74);
+            this.txtTime.Location = new System.Drawing.Point(1015, 479);
             this.txtTime.Name = "txtTime";
             this.txtTime.Size = new System.Drawing.Size(153, 21);
             this.txtTime.TabIndex = 1;
+            this.txtTime.Visible = false;
             this.txtTime.Enter += new System.EventHandler(this.txtTime_Enter);
             this.txtTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTime_KeyPress);
             // 
@@ -164,7 +153,6 @@
             this.Name = "DayDayWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DayDayUp";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DayDayWindow_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DayDayWindow_KeyDown);
             this.status_foot.ResumeLayout(false);
@@ -188,7 +176,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripStatusLabel status_foot_user;
         private System.Windows.Forms.TextBox txtTime;
-        private System.Windows.Forms.Button btnDefault;
     }
 }
 

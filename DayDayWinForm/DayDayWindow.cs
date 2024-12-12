@@ -157,7 +157,7 @@ namespace DayDayWinForm
         {
             menu_head.Items.Clear();
 
-            //账号
+            //代码生成登录菜单
             menu_head.Items.Add(loginmenu());
 
             list = Sugar.MySql.Queryable<menus>().ToList();
@@ -171,11 +171,12 @@ namespace DayDayWinForm
                 menu_head.Items.Add(newItem);
             }
 
-
             InitializeContextMenu();
-
         }
 
+        /// <summary>
+        /// 代码生成登录菜单 
+        /// </summary>
         private ToolStripMenuItem loginmenu()
         {
             ToolStripMenuItem Account = new ToolStripMenuItem("Account");
@@ -234,14 +235,6 @@ namespace DayDayWinForm
                 }
             }
         }
-
-        private void DayDayWindow_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F5)
-            {
-                ControlHelper.OpenForm(tab_body, "Option_MainOption", "Option");
-            }
-        }
         public void NewItem_Click(object sender, EventArgs e, menus menu)
         {
             bool isok = false;
@@ -261,8 +254,10 @@ namespace DayDayWinForm
                     if (menu.ParentId != 0 && !isok) App.LogMessage("请配置菜单功能...");
                     break;
             }
-
-
+        }
+        private void DayDayWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5) ControlHelper.OpenForm(tab_body, "Option_MainOption", "Option");
         }
 
 
@@ -279,10 +274,6 @@ namespace DayDayWinForm
         private void txtTime_Enter(object sender, EventArgs e)
         {
             txtTime.Text = DateTime.Now.ToString("yyyy-MM-dd 00:00:00");
-        }
-        private void btnDefault_Click(object sender, EventArgs e)
-        {
-
         }
 
     }
