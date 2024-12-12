@@ -1,6 +1,7 @@
 ﻿using DayDayBackup.Resources;
 using Microsoft.Win32;
 using MySql.Data.MySqlClient;
+using Mysqlx;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -36,6 +37,10 @@ namespace DayDayBackup
             Connect connect = new Connect(this);
             if (connect.GetDataBase())
             {
+                if (serverDatabase.Count == 0)
+                {
+                    serverDatabase.Add("无数据");
+                }
                 //加载数据库结构
                 lbDatabase.ItemsSource = null;
                 lbDatabase.ItemsSource = serverDatabase;
@@ -122,6 +127,11 @@ namespace DayDayBackup
                             while (reader.Read())
                             {
                                 string temp = reader.GetString(0);
+
+                                if (!string.IsNullOrEmpty(txtKey.Text.Trim()))
+                                    if (!temp.Contains(txtKey.Text.Trim()))
+                                        continue;
+
                                 tables.Add(temp, true);
                             }
                         }
@@ -214,7 +224,7 @@ namespace DayDayBackup
 
         }
 
-        private void btnBackup_Click_1(object sender, RoutedEventArgs e)
+        private async void btnBackup_Click_1(object sender, RoutedEventArgs e)
         {
             if (btnReConnect.Content.ToString() != "已连接")
             {
@@ -247,49 +257,59 @@ namespace DayDayBackup
             };
             if (folderDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                string checktab = "";
-
-                foreach (var item in tables.Keys.ToArray())
-                    if (tables[item])
-                        checktab += $" {item}";
-
-                backpath = folderDialog.SelectedPath + $"\\{dbName}{DateTime.Now.ToString("yyMMdd")}.sql";
-                string cmd = $"mysqldump --host={serverIp} --default-character-set=utf8 --lock-tables   --port={serverPort} --user={serverUser} --password={serverPassword} --quick --hex-blob  --databases {dbName} --tables {checktab} > {backpath}";
-
-                try
+                pbLoading.Visibility = Visibility.Visible;
+                string message = "";
+                await Task.Run(() =>
                 {
-                    System.Diagnostics.Process p = new System.Diagnostics.Process();
-                    p.StartInfo.FileName = "cmd.exe";
-                    p.StartInfo.WorkingDirectory = servermysqldump;
-                    p.StartInfo.UseShellExecute = false;
-                    p.StartInfo.RedirectStandardInput = true;
-                    p.StartInfo.RedirectStandardOutput = true;
-                    p.StartInfo.RedirectStandardError = true;
-                    p.StartInfo.CreateNoWindow = true;
-                    p.Start();
-                    //输入命令
-                    p.StandardInput.WriteLine(cmd);
-                    p.StandardInput.Close();
-                    // 等待进程完成
-                    p.WaitForExit();
+                    string checktab = "";
 
-                    // 获取输出信息（可选）
-                    string output = p.StandardOutput.ReadToEnd();
-                    string error = p.StandardError.ReadToEnd();
+                    foreach (var item in tables.Keys.ToArray())
+                        if (tables[item])
+                            checktab += $" {item}";
 
-                    p.Close();
-                    p.Dispose();
-                    MessageBox.Show("数据正在备份!","提示");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "错误");
-                }
-                
+                    backpath = folderDialog.SelectedPath + $"\\{dbName}{DateTime.Now.ToString("yyyyMMddHHmmss")}.sql";
+                    string cmd = $"mysqldump --host={serverIp} --default-character-set=utf8 --lock-tables   --port={serverPort} --user={serverUser} --password={serverPassword} --quick --hex-blob  --databases {dbName} --tables {checktab} > {backpath}";
+
+                    try
+                    {
+                        System.Diagnostics.Process p = new System.Diagnostics.Process();
+                        p.StartInfo.FileName = "cmd.exe";
+                        p.StartInfo.WorkingDirectory = servermysqldump;
+                        p.StartInfo.UseShellExecute = false;
+                        p.StartInfo.RedirectStandardInput = true;
+                        p.StartInfo.RedirectStandardOutput = true;
+                        p.StartInfo.RedirectStandardError = true;
+                        p.StartInfo.CreateNoWindow = true;
+                        p.Start();
+                        //输入命令
+                        p.StandardInput.WriteLine(cmd);
+                        p.StandardInput.Close();
+                        // 等待进程完成
+                        p.WaitForExit();
+
+                        // 获取输出信息（可选）
+                        string output = p.StandardOutput.ReadToEnd();
+                        string error = p.StandardError.ReadToEnd();
+
+                        p.Close();
+                        p.Dispose();
+
+                        if (error.ToUpper().Contains("ERROR")) message = error;
+                        else message = "备份成功";
+
+                    }
+                    catch (Exception ex)
+                    {
+                        message = ex.Message;
+                    }
+                });
+
+                MessageBox.Show(message);
+                pbLoading.Visibility = Visibility.Hidden;
             }
         }
 
-        private void btnRestore_Click(object sender, RoutedEventArgs e)
+        private async void btnRestore_Click(object sender, RoutedEventArgs e)
         {
             if (btnReConnect.Content.ToString() != "已连接")
             {
@@ -305,48 +325,70 @@ namespace DayDayBackup
             bool? result = openFile.ShowDialog();
             if (result.Value)
             {
-                try
+                string tempdbName = "";
+                if (openFile.FileName.IndexOf("scadadata") != -1) tempdbName = "scadadata";
+                else if (openFile.FileName.IndexOf("scadacurcevalue") != -1) tempdbName = "scadacurcevalue";
+
+
+                if (string.IsNullOrEmpty(tempdbName))
                 {
-                    string tempdbName = "";
-                    if (openFile.FileName.IndexOf("scadadata") != -1) tempdbName = "scadadata";
-                    else if (openFile.FileName.IndexOf("scadacurcevalue") != -1) tempdbName = "scadacurcevalue";
+                    MessageBox.Show("文件名不规范", "提示");
+                    return;
+                }
 
+                pbLoading.Visibility = Visibility.Visible;
+                string message = "";
 
-                    if (string.IsNullOrEmpty(tempdbName))
+                await Task.Run(() =>
+                {
+                    try
                     {
-                        MessageBox.Show("文件名不规范", "提示");
-                        return;
+                        CreateDatabase(tempdbName);
+
+                        // 构建命令
+                        string cmd = $"mysql -h {serverIp} -P {serverPort} -u {serverUser} -p{serverPassword} {tempdbName} < \"{openFile.FileName}\"";
+                        System.Diagnostics.Process p = new System.Diagnostics.Process();
+                        p.StartInfo.FileName = "cmd.exe";
+                        p.StartInfo.WorkingDirectory = servermysqldump;
+                        p.StartInfo.UseShellExecute = false;
+                        p.StartInfo.RedirectStandardInput = true;
+                        p.StartInfo.RedirectStandardOutput = true;
+                        p.StartInfo.RedirectStandardError = true;
+                        p.StartInfo.CreateNoWindow = true;
+                        p.Start();
+                        //输入命令
+                        p.StandardInput.WriteLine(cmd);
+                        p.StandardInput.Close();
+
+                        // 等待进程完成
+                        p.WaitForExit();
+
+                        // 获取输出信息（可选）
+                        string output = p.StandardOutput.ReadToEnd();
+                        string error = p.StandardError.ReadToEnd();
+
+                        p.Close();
+                        p.Dispose();
+
+                        if (error.ToUpper().Contains("ERROR")) message = error;
+                        else message = "还原成功";
+
                     }
-                    CreateDatabase(tempdbName);
+                    catch (Exception ex)
+                    {
+                        message = ex.Message;
+                    }
 
-                    // 构建命令
-                    string cmd = $"mysql -h {serverIp} -P {serverPort} -u {serverUser} -p{serverPassword} {tempdbName} < \"{openFile.FileName}\"";
-                    System.Diagnostics.Process p = new System.Diagnostics.Process();
-                    p.StartInfo.FileName = "cmd.exe";
-                    p.StartInfo.WorkingDirectory = servermysqldump;
-                    p.StartInfo.UseShellExecute = false;
-                    p.StartInfo.RedirectStandardInput = true;
-                    p.StartInfo.RedirectStandardOutput = true;
-                    p.StartInfo.RedirectStandardError = true;
-                    p.StartInfo.CreateNoWindow = true;
-                    p.Start();
-                    //输入命令
-                    p.StandardInput.WriteLine(cmd);
-                    p.Close();
-                    p.Dispose();
-                    MessageBox.Show("数据正在还原!", "提示");
+                });
 
-                    Connect connect = new Connect(this);
-                    connect.GetDataBase();
-                    //加载数据库结构
-                    lbDatabase.ItemsSource = null;
-                    lbDatabase.ItemsSource = serverDatabase;
+                MessageBox.Show(message);
+                pbLoading.Visibility = Visibility.Hidden;
 
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "错误");
-                }
+                Connect connect = new Connect(this);
+                connect.GetDataBase();
+                //加载数据库结构
+                lbDatabase.ItemsSource = null;
+                lbDatabase.ItemsSource = serverDatabase;
             }
         }
 
@@ -369,6 +411,19 @@ namespace DayDayBackup
                     MessageBox.Show(ex.Message, "错误");
                     return;
                 }
+            }
+        }
+
+        private void btnQuery_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void txtKey_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key==Key.Enter)
+            {
+                GetTable(dbName);
+                ShowTable();
             }
         }
     }
