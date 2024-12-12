@@ -93,14 +93,13 @@ namespace DayDayBackup
             }
             else
             {
-                GetTable(name);
+                dbName = name;
+                GetTable();
                 ShowTable();
             }
         }
-        private void GetTable(string database)
+        private void GetTable()
         {
-            if (database.IndexOf("scadadata") != -1) dbName = "scadadata";
-            else dbName = "scadacurcevalue";
             tables.Clear();
 
             // MySQL 连接字符串（请根据你的配置更改）
@@ -422,7 +421,7 @@ namespace DayDayBackup
         {
             if (e.Key==Key.Enter)
             {
-                GetTable(dbName);
+                GetTable();
                 ShowTable();
             }
         }

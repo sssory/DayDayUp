@@ -71,15 +71,8 @@ namespace DayDayBackup.Resources
                             // 读取并打印所有数据库名称
                             while (reader.Read())
                             {
-                                string temp = reader.GetString(0);
-                                if (temp == "scadadata")
-                                {
-                                    parent.serverDatabase.Add("程序数据库(scadadata)");
-                                }
-                                else if (temp == "scadacurcevalue")
-                                {
-                                    parent.serverDatabase.Add("历史数据库(scadacurcevalue)");
-                                }
+                                string temp = reader.GetString(0); 
+                                parent.serverDatabase.Add(temp);
                             }
                         }
                     }
