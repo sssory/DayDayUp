@@ -13,7 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayDayWinForm", "DayDayWinF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "WpfApp\WpfApp.csproj", "{988F11B6-EA01-4082-BEFC-57F15C60EE67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{4D0C06F8-3A9E-47C6-8AF1-6D93E3CEB751}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{4D0C06F8-3A9E-47C6-8AF1-6D93E3CEB751}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DayDayWpf", "DayDayWpf\DayDayWpf.csproj", "{E3D5EDAC-9C04-4EC6-A1F4-B71D4FACEE22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{4D0C06F8-3A9E-47C6-8AF1-6D93E3CEB751}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D0C06F8-3A9E-47C6-8AF1-6D93E3CEB751}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D0C06F8-3A9E-47C6-8AF1-6D93E3CEB751}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3D5EDAC-9C04-4EC6-A1F4-B71D4FACEE22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3D5EDAC-9C04-4EC6-A1F4-B71D4FACEE22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3D5EDAC-9C04-4EC6-A1F4-B71D4FACEE22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3D5EDAC-9C04-4EC6-A1F4-B71D4FACEE22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
