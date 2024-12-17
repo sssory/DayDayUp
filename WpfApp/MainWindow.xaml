@@ -5,14 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DayDayBackup"
         mc:Ignorable="d"
-        Title="MySQL备份" Height="659" Width="940" WindowStartupLocation="CenterScreen" Icon="/Resources/数位学习.ico" Loaded="Window_Loaded">
+        Title="MySQL备份" Height="659" Width="940" WindowStartupLocation="CenterScreen" Icon="/Resources/数位学习.ico" Loaded="Window_Loaded" KeyDown="Window_KeyDown_1">
     <Grid>
-        <DockPanel>
-            <ToolBar  DockPanel.Dock="Top" Height="30" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="323*"/>
+            <ColumnDefinition Width="147*"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.ColumnSpan="2">
+            <ToolBar  DockPanel.Dock="Top" Height="30" RenderTransformOrigin="0.554,0.625" >
                 <Button x:Name="btnReConnect" Content="未连接" Width="61" Click="btnReConnect_Click"  BorderBrush="#FFE4DFDF" Margin="10,0,0,0"   />
                 <Button x:Name="btnGetDump" Content="dump" Width="61" Click="btnGetDump_Click"  BorderBrush="#FFE4DFDF" Margin="20,0,0,0"  />
-                <Button x:Name="btnRestore" Content="还原" Width="61" Click="btnRestore_Click"  BorderBrush="#FFE4DFDF" Margin="20,0,0,0" />
                 <Button x:Name="btnBackup" Content="备份" Width="61" Click="btnBackup_Click_1"  BorderBrush="#FFE4DFDF" Margin="20,0,0,0" />
+                <ProgressBar Height="8" Width="112" Minimum="0" Maximum="100" x:Name="pbLoading1" IsIndeterminate="True" Visibility="Hidden" />
+                <Button Name="OpenSqlFileButton" BorderBrush="#FFE4DFDF"  Content="打开SQL文件并执行" Height="24" Width="149" Click="OpenSqlFileButton_Click" Visibility="Hidden"  />
+
+                <TextBlock Name="StatusTextBlock" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text="" Height="17"/>
+
+                <Button x:Name="btnRestore" Content="还原" Width="61" Click="btnRestore_Click"  BorderBrush="#FFE4DFDF" Margin="20,0,0,0" Visibility="Hidden" />
                 <ProgressBar Height="8" Width="112" Margin="20,0,0,0" Minimum="0" Maximum="100" x:Name="pbLoading" IsIndeterminate="True" Visibility="Hidden" />
             </ToolBar>
             <Border DockPanel.Dock="Left" Width="200" BorderThickness="0,0,1,0">

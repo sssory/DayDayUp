@@ -4,9 +4,72 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DayDayWpf"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d" Height="1080" Width="1920" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded" WindowStyle="None">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <!--菜单-->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <!--<ColumnDefinition Width="40" />-->
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="40" />
+            </Grid.ColumnDefinitions>
+            <!--<Grid Grid.Column="0">
+                <Image x:Name="appIcon" Source="/app.png" Width="20" Height="20" />
+            </Grid>-->
 
+            <Menu Grid.Column="0"  Padding="2.5,2.5,2.5,2.5" x:Name="menu_head">
+                <MenuItem Header="菜单" Height="20">
+                    <MenuItem Header="子菜单" Height="20"></MenuItem>
+                    <MenuItem Header="子菜单" Height="20"></MenuItem>
+                    <MenuItem Header="子菜单" Height="20"></MenuItem>
+                </MenuItem>
+            </Menu>
+            <Grid Grid.Column="1">
+                <Button x:Name="appOutIcon" Content="退出" Click="btnClose_Click" ></Button>
+            </Grid>
+        </Grid>
+        <!--工具-->
+        <Grid Grid.Row="1"></Grid>
+        <!--内容-->
+        <Grid Grid.Row="2">
+            <TabControl x:Name="tab_body">
+                <TabItem Header="欢迎">
+                    <Grid>
+                        
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+        <!--信息栏-->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Border BorderBrush="#FFABADB3" BorderThickness="1,1,1,1"/>
+            </Grid>
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+            <Grid Grid.Column="3">
+                <TextBox x:Name="txtMsg" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" IsReadOnly="True"></TextBox>
+            </Grid>
+        </Grid>
+        <!--状态栏-->
+        <Grid Grid.Row="4">
+            <StatusBar BorderThickness="1,1,1,1" BorderBrush="DarkGray">
+                <StatusBarItem HorizontalAlignment="Right">
+                    <ProgressBar x:Name="loadingBar" Width="100" Height="10" Visibility="Hidden"></ProgressBar>
+                </StatusBarItem>
+            </StatusBar>
+        </Grid>
+        
     </Grid>
 </Window>

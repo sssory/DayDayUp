@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using Mysqlx;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -27,12 +28,17 @@ namespace DayDayBackup
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {   
+        
+    
+
         public MainWindow()
         {
             InitializeComponent();
+  
         }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+
+            private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Connect connect = new Connect(this);
             if (connect.GetDataBase())
@@ -47,7 +53,12 @@ namespace DayDayBackup
 
                 btnReConnect.Content = "已连接";
                 btnReConnect.Background = new SolidColorBrush(Color.FromRgb(144, 238, 144));
-                btnGetDump.Background = new SolidColorBrush(Color.FromRgb(144, 238, 144));
+
+                if (File.Exists(servermysqldump+ "\\mysqldump.exe"))
+                {
+                    btnGetDump.Background = new SolidColorBrush(Color.FromRgb(144, 238, 144));
+                }
+                
             }
         }
         public string serverIp = "localhost";
@@ -81,7 +92,10 @@ namespace DayDayBackup
 
                 btnReConnect.Content = "已连接";
                 btnReConnect.Background = new SolidColorBrush(Color.FromRgb(144, 238, 144));
-                btnGetDump.Background = new SolidColorBrush(Color.FromRgb(144, 238, 144));
+                if (File.Exists(servermysqldump + "\\mysqldump.exe"))
+                {
+                    btnGetDump.Background = new SolidColorBrush(Color.FromRgb(144, 238, 144));
+                }
             }
         }
         private void lbDatabase_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -167,7 +181,6 @@ namespace DayDayBackup
                 wpTable.Children.Add(cb);
             }
         }
-
         private void Cb_Unchecked(object sender, RoutedEventArgs e)
         {
             CheckBox check = sender as CheckBox;
@@ -267,8 +280,8 @@ namespace DayDayBackup
                             checktab += $" {item}";
 
                     backpath = folderDialog.SelectedPath + $"\\{dbName}{DateTime.Now.ToString("yyyyMMddHHmmss")}.sql";
-                    string cmd = $"mysqldump --host={serverIp} --default-character-set=utf8 --lock-tables   --port={serverPort} --user={serverUser} --password={serverPassword} --quick --hex-blob  --databases {dbName} --tables {checktab} > {backpath}";
-
+                    string cmd = $"mysqldump --host={serverIp} --default-character-set=utf8 --single-transaction  --port={serverPort} --user={serverUser} --password={serverPassword} --quick --hex-blob  --databases {dbName} --tables {checktab} > {backpath}";
+                    
                     try
                     {
                         System.Diagnostics.Process p = new System.Diagnostics.Process();
@@ -412,17 +425,67 @@ namespace DayDayBackup
                 }
             }
         }
-
-        private void btnQuery_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
         private void txtKey_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key==Key.Enter)
             {
                 GetTable();
                 ShowTable();
+            }
+        }
+
+    
+
+        private void OpenSqlFileButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "SQL文件|*.sql",
+                Title = "选择一个SQL文件"
+            };
+
+
+            // 显示对话框并检查是否选择了文件
+            bool? result = openFileDialog.ShowDialog();
+            if (result == true)
+            {
+                string filePath = openFileDialog.FileName;
+
+                try
+                {
+                    // 读取SQL文件内容
+                    string sqlScript = File.ReadAllText(filePath, Encoding.UTF8);
+
+                    // 连接到数据库（请根据实际情况修改连接字符串）
+                    string connectionString = "Server=" + serverIp + ";Port=" + serverPort + ";User ID=" + serverUser + ";Password=" + serverPassword + ";";
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
+                    {
+                        connection.Open();
+
+                        // 使用SqlCommand执行SQL脚本
+                        using (MySqlCommand command = new MySqlCommand(sqlScript, connection))
+                        {
+                            command.ExecuteNonQuery();
+                            StatusTextBlock.Text = "SQL文件执行成功！";
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // 捕获并显示异常信息
+                    MessageBox.Show($"执行SQL文件时出错: {ex.Message}", "错误", MessageBoxButton.OK, MessageBoxImage.Error);
+                    StatusTextBlock.Text = "SQL文件执行失败！";
+                }
+            }
+        }
+
+        private void Window_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F12)
+            {
+                btnRestore.Visibility = Visibility.Visible;
+                OpenSqlFileButton.Visibility = Visibility.Visible;
+                // 创建一个打开文件对话框
             }
         }
     }
