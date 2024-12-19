@@ -345,10 +345,6 @@
       <Project>{7796993C-5AD7-48D2-986C-541D335A2726}</Project>
       <Name>Communicate</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DayDayDB\DataBase.csproj">
-      <Project>{21d6a51e-ac32-4ea9-8686-a773fc0a85f7}</Project>
-      <Name>DataBase</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Tools\Common.csproj">
       <Project>{b9606609-ccfc-48d2-b474-7c7839075db1}</Project>
       <Name>Common</Name>
