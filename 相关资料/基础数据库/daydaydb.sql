@@ -1,7 +1,7 @@
 -- MySQL Administrator dump 1.4
 --
 -- ------------------------------------------------------
--- Server version	5.6.40-log
+-- Server version	5.1.47-community
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -59,26 +59,6 @@ INSERT INTO `menus` (`Id`,`Name`,`Code`,`Sort`,`ParentId`,`ShowType`,`AutoStart`
  (17,'SugarHelper','Tool_Sugar',2,14,'form',0),
  (18,'ModbusRTU','SerialPort_ModbusRTU',0,11,'control',0);
 /*!40000 ALTER TABLE `menus` ENABLE KEYS */;
-
-
---
--- Definition of table `userpower`
---
-
-DROP TABLE IF EXISTS `userpower`;
-CREATE TABLE `userpower` (
-  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `UserId` int(10) unsigned NOT NULL,
-  `PowerType` int(10) unsigned NOT NULL COMMENT '0菜单',
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `userpower`
---
-
-/*!40000 ALTER TABLE `userpower` DISABLE KEYS */;
-/*!40000 ALTER TABLE `userpower` ENABLE KEYS */;
 
 
 --

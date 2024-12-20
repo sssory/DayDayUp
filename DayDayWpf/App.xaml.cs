@@ -22,7 +22,7 @@ namespace DayDayWpf
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);  // 加载 appsettings.json
 
             Configuration = builder.Build();  // 构建配置对象
-            Sugar.Init(Configuration["ConnectionStrings:MySqlConnectionString"]);
+            DayDayDB.Init(Configuration["ConnectionStrings:MySqlConnectionString"]);
         }
     }
 

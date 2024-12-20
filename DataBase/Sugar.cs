@@ -4,7 +4,7 @@ using System.Configuration;
 
 namespace DataBase
 {
-    public static class Sugar
+    internal static class Sugar
     {
         public static void Init(string _mysqlConnectionString)
         {
@@ -38,7 +38,8 @@ namespace DataBase
           });
         }
 
-
         public static SqlSugarScope MySql = null;
     }
+
+
 }

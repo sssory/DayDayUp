@@ -41,7 +41,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Communicate\Communicate.csproj" />
     <ProjectReference Include="..\DataBase\DataBase.csproj" />
-    <ProjectReference Include="..\DayDayDB\DataBase.csproj" />
     <ProjectReference Include="..\Tools\Common.csproj" />
   </ItemGroup>
 

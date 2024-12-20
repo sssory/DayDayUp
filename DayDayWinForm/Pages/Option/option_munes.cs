@@ -1,16 +1,10 @@
 ﻿using DataBase;
 using DataBase.MySql;
-using SqlSugar;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace DayDayWinForm.Pages.Option
 {
@@ -22,7 +16,7 @@ namespace DayDayWinForm.Pages.Option
         }
         private void option_munes_Load(object sender, EventArgs e)
         {
-            list = Sugar.MySql.Queryable<menus>().ToList();
+            list = DayDayDB.GetList<menus>();
             BindList();
         }
         private int GetId(TreeNode node)
@@ -132,7 +126,7 @@ namespace DayDayWinForm.Pages.Option
             menu.ShowType = cbType.SelectedItem.ToString();
             menu.AutoStart = cbAutoStart.Checked ? 1 : 0;
             menu.Sort = outid;
-            Sugar.MySql.Updateable(menu).ExecuteCommand();
+            DayDayDB.Update(menu);
             MessageBox.Show("操作成功");
 
         }
@@ -164,7 +158,7 @@ namespace DayDayWinForm.Pages.Option
             newm.ParentId = parentid;
             newm.ShowType = cbType.SelectedItem.ToString();
             newm.AutoStart = cbAutoStart.Checked ? 1 : 0;
-            newm = Sugar.MySql.Insertable(newm).ExecuteReturnEntity();
+            newm = DayDayDB.Insert(newm);
             list.Add(newm);
 
             tvmenus.Nodes.Clear();
@@ -184,7 +178,7 @@ namespace DayDayWinForm.Pages.Option
                 
                 int id = GetId(tvmenus.SelectedNode);
                 var del = list.FirstOrDefault(d => d.Id ==id);
-                Sugar.MySql.Deleteable(del).ExecuteCommand();
+                DayDayDB.Delete(del);
                 list.Remove(del);
                 DelChild(id);
 
@@ -198,7 +192,7 @@ namespace DayDayWinForm.Pages.Option
             List<menus> dels = list.Where(d => d.ParentId == parentid).ToList();
             foreach (var del in dels)
             {
-                Sugar.MySql.Deleteable(del).ExecuteCommand();
+                DayDayDB.Delete(del);
                 list.Remove(del);
                 DelChild(del.Id);
             }

@@ -1,12 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-<ItemGroup>
-  <PackageReference Include="MySql.Data" Version="9.0.0">
-    <PrivateAssets>none</PrivateAssets>
-    <CopyLocal>true</CopyLocal>
-  </PackageReference>
-</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="9.0.0">
+      <PrivateAssets>none</PrivateAssets>
+      <CopyLocal>true</CopyLocal>
+    </PackageReference>
+    <PackageReference Include="SqlSugar">
+      <Version>5.1.4.171</Version>
+    </PackageReference>
+  </ItemGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -18,6 +21,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -104,16 +108,13 @@
   <ItemGroup>
     <Compile Include="MySql\logs.cs" />
     <Compile Include="MySql\menus.cs" />
-    <Compile Include="MySql\userpower.cs" />
     <Compile Include="MySql\users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SguarBll.cs" />
+    <Compile Include="DayDayDB.cs" />
     <Compile Include="Sugar.cs" />
     <Compile Include="TableCommand.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SqlServer\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

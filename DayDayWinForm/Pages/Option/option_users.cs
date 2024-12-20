@@ -21,7 +21,7 @@ namespace DayDayWinForm.Pages.Option
 
         public void BindList()
         {
-            List<users> us = Sugar.MySql.Queryable<users>().ToList();
+            List<users> us = DayDayDB.GetList<users>();
             BindingList<users> bindList = new BindingList<users>(us);
             gvList.DataSource = bindList;
         }

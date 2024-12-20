@@ -38,7 +38,8 @@ namespace DayDayWpf
         {
             menu_head.Items.Clear();
 
-            list = SguarBll.GetList<menus>();
+            list = DayDayDB.GetList<menus>();
+            //一级菜单
             foreach (var item in list.Where(m => m.ParentId == 0).OrderBy(m => m.Sort))
             {
                 MenuItem newItem = new MenuItem();
@@ -51,7 +52,7 @@ namespace DayDayWpf
             }
         }
 
-
+        //二级菜单
         private void LoadMenusChild(MenuItem parent)
         {
             var child = list.Where(c => c.ParentId == int.Parse(Convert.ToString(parent.Tag))).OrderBy(c => c.Sort);

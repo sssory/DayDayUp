@@ -32,7 +32,7 @@
                 </MenuItem>
             </Menu>
             <Grid Grid.Column="1">
-                <Button x:Name="appOutIcon" Content="退出" Click="btnClose_Click" ></Button>
+                <Button x:Name="appOutIcon" Content="退出" Click="btnClose_Click" BorderThickness="0,0,0,0" Background="{x:Null}" ></Button>
             </Grid>
         </Grid>
         <!--工具-->
