@@ -22,7 +22,6 @@ namespace DataBase
             Sugar.Init(ConnectionString);
         }
 
-        #region 查询
         public static List<T> GetList<T>(string where = "") where T : class, new()
         {
             return Sugar.MySql.Queryable<T>().Where(where).ToList();
@@ -35,9 +34,6 @@ namespace DataBase
         {
             return Sugar.MySql.Ado.GetScalar(cmd);
         }
-        #endregion
-
-        #region 增删改
         public static T Insert<T>(T ent) where T : class, new()
         {
             return (T)Sugar.MySql.Insertable<T>(ent).ExecuteReturnEntity();
@@ -66,7 +62,6 @@ namespace DataBase
         {
             return Sugar.MySql.Ado.ExecuteCommand(cmd);
         }
-        #endregion
 
     }
 }
