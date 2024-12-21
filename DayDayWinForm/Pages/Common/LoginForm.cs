@@ -20,8 +20,7 @@ namespace DayDayWinForm.Pages.Common
         {
             InitializeComponent();
         }
-         
-
+        
         private void LoginForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
