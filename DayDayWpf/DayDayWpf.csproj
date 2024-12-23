@@ -13,7 +13,8 @@
 
   <ItemGroup>
     <None Remove="appsettings.json" />
-    <None Remove="Resources\Icon\app.png" />
+    <None Remove="Resources\Icon\close.png" />
+    <None Remove="Resources\Icon\min.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,7 +24,10 @@
     <Content Include="Resources\Icon\app.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Icon\app.png">
+    <Content Include="Resources\Icon\close.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icon\min.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

@@ -6,9 +6,6 @@
         xmlns:local="clr-namespace:DayDayWpf"
         mc:Ignorable="d" Height="1080" Width="1920" WindowStartupLocation="CenterScreen" WindowState="Maximized" Loaded="Window_Loaded" WindowStyle="None">
     <!--绑定视图模型-->
-    <!--<Window.DataContext>
-        <local:Main_Vm />
-    </Window.DataContext>-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -20,16 +17,17 @@
         <!--菜单-->
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <!--<ColumnDefinition Width="40" />-->
+                <ColumnDefinition Width="40" />
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="40" />
                 <ColumnDefinition Width="40" />
             </Grid.ColumnDefinitions>
             <!--图标-->
-            <!--<Grid Grid.Column="0">
-                <Image x:Name="appIcon" Source="/app.png" Width="20" Height="20" />
-            </Grid>-->
+            <Grid Grid.Column="0">
+                <Image x:Name="appIcon" Source="/Resources/Icon/app.ico" Width="16"/>
+            </Grid>
 
-            <Menu Grid.Column="0"  Padding="2.5,2.5,2.5,2.5" x:Name="menu_head" ItemsSource="{Binding MenuItems}">
+            <Menu Grid.Column="1"  Padding="2.5,2.5,2.5,2.5" x:Name="menu_head" ItemsSource="{Binding MenuItems}">
                 <Menu.ItemContainerStyle>
                     <Style TargetType="MenuItem">
                         <Setter Property="Header" Value="{Binding Header}"/>
@@ -39,8 +37,19 @@
                     </Style>
                 </Menu.ItemContainerStyle>
             </Menu>
-            <Grid Grid.Column="1">
-                <Button x:Name="appOutIcon" Content="退出" Click="btnClose_Click" BorderThickness="0,0,0,0" Background="{x:Null}" ></Button>
+            <Grid Grid.Column="2">
+                <Button Name="appMin"  Click="appMin_Click"  BorderThickness="1,0,1,0">
+                    <Button.Content>
+                        <Image Source="/Resources/Icon/min.png" Width="16"></Image>
+                    </Button.Content>
+                </Button>
+            </Grid>
+            <Grid Grid.Column="3">
+                <Button Name="appOut"  Click="btnClose_Click" BorderThickness="0,0,0,0">
+                    <Button.Content>
+                        <Image Source="/Resources/Icon/close.png" Width="16"></Image>
+                    </Button.Content>
+                </Button>
             </Grid>
         </Grid>
         <!--工具-->
@@ -50,7 +59,7 @@
             <TabControl x:Name="tab_body">
                 <TabItem Header="欢迎">
                     <Grid>
-                        
+                        <Button Name="btnDefault" Click="btnDefault_Click" Content="{Binding Index}" Margin="907,346" />
                     </Grid>
                 </TabItem>
             </TabControl>
