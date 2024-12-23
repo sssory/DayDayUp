@@ -160,7 +160,7 @@ namespace DayDayWinForm
             //代码生成登录菜单
             menu_head.Items.Add(loginmenu());
 
-            list = Sugar.MySql.Queryable<menus>().ToList();
+            list = DayDayDB.GetList<menus>();
             foreach (var item in list.Where(m => m.ParentId == 0).OrderBy(m => m.Sort))
             {
                 ToolStripMenuItem newItem = new ToolStripMenuItem(item.Name);

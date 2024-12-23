@@ -39,7 +39,7 @@ namespace DayDayWinForm.Pages.Tool
 
             lblPath.Text = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-            List<string> tables = Sugar.MySql.Ado.SqlQuery<string>($"SELECT table_name FROM information_schema.tables WHERE table_schema = '{AppConfig.Get("MySqlDBName")}'");
+            List<string> tables = DayDayDB.GetQuery<string>($"SELECT table_name FROM information_schema.tables WHERE table_schema = '{AppConfig.Get("MySqlDBName")}'");
 
             tables.Insert(0, "");
             cbTable.DataSource = tables;
@@ -74,8 +74,8 @@ namespace DayDayWinForm.Pages.Tool
             //2 创建文件
             try
             {
-                DataBase.Sugar.MySql.DbFirst.Where(it => it == tableName).IsCreateAttribute().IsCreateDefaultValue().CreateClassFile(folder, nameSpace);
-                MessageBox.Show("成功");
+                //DataBase.Sugar.MySql.DbFirst.Where(it => it == tableName).IsCreateAttribute().IsCreateDefaultValue().CreateClassFile(folder, nameSpace);
+                //MessageBox.Show("成功");
 
 
                 //OpenFileDialog openFile = new OpenFileDialog();

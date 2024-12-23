@@ -53,8 +53,8 @@ namespace DayDayWinForm.Pages.Tool
             //2 创建文件
             try
             {
-                DataBase.Sugar.MySql.DbFirst.Where(it => it == tableName).IsCreateAttribute().IsCreateDefaultValue().CreateClassFile(folder, nameSpace);
-                MessageBox.Show("成功");
+                //DataBase.Sugar.MySql.DbFirst.Where(it => it == tableName).IsCreateAttribute().IsCreateDefaultValue().CreateClassFile(folder, nameSpace);
+                //MessageBox.Show("成功");
 
 
                 //OpenFileDialog openFile = new OpenFileDialog();

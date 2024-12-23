@@ -74,7 +74,7 @@ namespace DayDayWinForm.Pages.Common
             try
             {
                 msg = "";
-                var user = Sugar.MySql.Queryable<users>().First(u => u.UserNumber == name);
+                var user = DayDayDB.GetList<users>().FirstOrDefault(u => u.UserNumber == name);
                 if (user == null)
                 {
                     msg = "账号或密码错误";

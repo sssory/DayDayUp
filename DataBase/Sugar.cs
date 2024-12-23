@@ -4,17 +4,16 @@ using System.Configuration;
 
 namespace DataBase
 {
-    public class Sugar
+    internal static class Sugar
     {
-        private static string mysqlConnectionString = ConfigurationManager.AppSettings["MySqlConnectionString"];
-        private static string sqlserverConnectionString = ConfigurationManager.AppSettings["SqlServerConnectionString"];
-
-        public static SqlSugarScope MySql = new SqlSugarScope(new ConnectionConfig()
+        public static void Init(string _mysqlConnectionString)
         {
-            ConnectionString = mysqlConnectionString,//连接符字串
-            DbType = DbType.MySql,//数据库类型
-            IsAutoCloseConnection = true //不设成true要手动close
-        },
+            MySql = new SqlSugarScope(new ConnectionConfig()
+            {
+                ConnectionString = _mysqlConnectionString,//连接符字串
+                DbType = DbType.MySql,//数据库类型
+                IsAutoCloseConnection = true //不设成true要手动close
+            },
 
           db =>
           {
@@ -25,7 +24,7 @@ namespace DataBase
 
                   //获取原生SQL推荐 5.1.4.63  性能OK
                   //UtilMethods.GetNativeSql(sql, pars)
-                  
+
                   //获取无参数化SQL 对性能有影响，特别大的SQL参数多的，调试使用
                   //Console.WriteLine(UtilMethods.GetSqlString(DbType.SqlServer,sql,pars))
 
@@ -37,5 +36,10 @@ namespace DataBase
               //注意多租户 有几个设置几个
               //db.GetConnection(i).Aop
           });
+        }
+
+        public static SqlSugarScope MySql = null;
     }
+
+
 }

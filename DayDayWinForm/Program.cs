@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataBase;
+using DayDayWinForm.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ namespace DayDayWinForm
         [STAThread]
         static void Main()
         {
+            DayDayDB.Init(AppConfig.Get("MySqlConnectionString"));
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new DayDayWindow());
